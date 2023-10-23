@@ -10,3 +10,6 @@
 
 # Mac Specific Files
 .DS_Store
+
+#firebase ignorables
+/.firebase/
