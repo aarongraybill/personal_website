@@ -1,4 +1,12 @@
+# R(studio) ignorables
 .Rproj.user
 .Rhistory
 .RData
 .Ruserdata
+
+# Quarto Ignorables
+/.quarto/
+/_site/
+
+# Mac Specific Files
+.DS_Store
