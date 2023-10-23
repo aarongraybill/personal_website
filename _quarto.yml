@@ -2,18 +2,23 @@ project:
   type: website
 
 website:
-  title: "personal_website"
+  title: "Aaron Graybill"
   navbar:
-    left:
-      - href: index.qmd
-        text: Home
-      - about.qmd
+   # left:
+   #   - href: index.qmd
+   #     text: Home
+   #   - href: cv.qmd
+   #     text: CV
 
 format:
   html:
-    theme: cosmo
-    css: styles.css
+    highlight-style: a11y
+    theme:
+      light: 
+        - flatly
+        - custom.scss
+      #dark: 
+      #  - darkly
+      #  - custom.css
     toc: true
-
-editor: visual
 

@@ -1,0 +1,7 @@
+---
+title: Page Not Found 😕
+---
+
+Oops, you've tried to access a page that was either renamed or removed.
+
+Venture back from whence you came [here](index.html).

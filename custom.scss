@@ -1,0 +1,32 @@
+/*-- scss:defaults --*/
+$primary: #000D4D !default;
+$secondary: #55CE58 !default;
+$off_white: #F0F0F0 !default;
+
+
+
+$h2-font-size:            1.6rem !default;
+$web-font-path: "https://fonts.googleapis.com/css?family=Alice|Atkinson+Hyperlegible" !default;
+@if $web-font-path {
+  @import url($web-font-path);
+};
+$font-family-sans-serif:  Atkinson Hyperlegible;
+$font-family: Atkinson Hyperlegible;
+$headings-font-family: Atkinson Hyperlegible;
+
+$link-color: $secondary;
+$presentation-heading-color: #383d3d !default;
+
+
+
+$primary:       #000D4D !default;
+$secondary:     #FF00FF;//#55CE58 !default;
+
+//$success:       $green !default;
+//$info:          $cyan !default;
+//$warning:       $orange !default;
+//$danger:        $purple !default;
+//$light:         $white !default;
+//$dark:          $gray-800 !default;
+
+/*-- scss:rules --*/

@@ -1,11 +1,33 @@
 ---
-title: "Aaron Graybill"
+title: "My Documentqwerty"
+execute:
+  echo: false
+  message: false
+  warning: false
 ---
 
-This is a Quarto website.
+![](assets/me.png){fig-alt="A Photo of Aaron Graybill"}
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+Hi, I'm Aaron! I'm a senior research assistant at the Federal Reserve Bank of Philadelphia. I work with [Kyle Mangum](https://www.philadelphiafed.org/our-people/kyle-mangum) on applied microeconomics.
+
+I graduated magna cum laude from Haverford College in 2022 with majors in economics and mathematics and a minor in statistics. My [undergraduate thesis](assets/Graybill_Undergraduate_Thesis.pdf) constructed a theoretical model to understand how "the algorithm" affects content creators' decisions to produce media.
+
+My research interests lie at the intersection of social science and technology. I'm particularly interested in how technology creates new market structures and how those markets present information to users. I hope to contribute to research on misinformation, radicalization on social media, and the impacts of digital media on consumer welfare.
+
+I'm the author of [ggchameleon](https://github.com/aarongraybill/ggchameleon), an R package that takes the headache out of making consistent-looking professional ggplots.
+
+You can download a copy of my CV [here](assets/Graybill_Resume_2023_10.pdf).
+
+Outside of research, I have a rotating cast of hobbies including film photography and development, recreational mathematics, various coding projects, and guitar.
+
 
 ```{r}
-1 + 1
+# library(plotly)
+# library(palmerpenguins)
+# library(ggplot2)
+# # library(ggchameleon)
+# p <-
+#   ggplot(penguins)+
+#   geom_point(aes(x=flipper_length_mm,y=body_mass_g,col=species))
+# ggplotly(p)
 ```
