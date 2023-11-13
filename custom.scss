@@ -1,9 +1,41 @@
 /*-- scss:defaults --*/
+//
+// Color system
+//
+
+$white:    #fff !default;
+$gray-100: #F0F0F0 !default;
+$gray-200: #D4D4D4 !default;
+$gray-300: #B9B9B9 !default;
+$gray-400: #9E9E9E !default;
+$gray-500: #848484 !default;
+$gray-600: #868e96 !default;
+$gray-700: #495057 !default;
+$gray-800: #525252 !default;
+$gray-900: #212529  !default;
+$black:    #000 !default;
+
+$blue:    #00a2f1 !default;
+$indigo:  #14559f !default;
+$purple:  #9C72E8 !default;
+$pink:    #CF309F !default;
+$red:     #ff4b48 !default;
+$orange:  #FC7E00 !default;
+$yellow:  #FFF200 !default;
+$green:   #55CE58 !default;
+
 $primary: #000D4D !default;
-$secondary: #55CE58 !default;
-$off_white: #F0F0F0 !default;
+$secondary: $green !default;
+$off_white: $gray-100 !default;
 
+$success:       $green !default;
+$info:          $indigo !default;
+$warning:       $yellow !default;
+$danger:        $red !default;
+$light:         $gray-200 !default;
+$dark:          $gray-600 !default;
 
+/* DEAL WITH FONTS */
 
 $h2-font-size:            1.6rem !default;
 $web-font-path: "https://fonts.googleapis.com/css?family=Alice|Atkinson+Hyperlegible" !default;
@@ -14,18 +46,11 @@ $font-family-sans-serif:  Atkinson Hyperlegible;
 $font-family: Atkinson Hyperlegible;
 $headings-font-family: Atkinson Hyperlegible;
 
-//$body-color: 
+$body-color: $gray-900;
 $link-color: $secondary;
 
-//$success:       $green !default;
-//$info:          $cyan !default;
-//$warning:       $orange !default;
-//$danger:        $purple !default;
-//$light:         $white !default;
-//$dark:          $gray-800 !default;
 
-/*-- scss:rules --*/
-
+/* INTERACTIVE HTML STYLING */
 #frame {
   border-style: solid;
   border-width: 3px;
@@ -34,7 +59,7 @@ $link-color: $secondary;
 }
 
 
-/* All of the Stylings for the Social Cards */
+/* SOCIAL CARD STYLING */
 
 /* General Style for cards */
 .fa {
@@ -46,7 +71,6 @@ $link-color: $secondary;
   border-radius: 50px;
 }
 
-/* Add a hover effect if you want */
 .fa:hover {
   opacity: 0.7;
 }
