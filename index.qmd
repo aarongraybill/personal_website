@@ -4,8 +4,14 @@ execute:
   message: false
   warning: false
 ---
-:::: {layout="[[50,-5,50]]" layout-valign="center"}
+:::: {layout="[[50,-2,50]]" layout-valign="center"}
+
+::: {.intro-card}
 ![](assets/me.jpg){fig-alt="A Photo of Aaron Graybill"}
+<a href="https://www.linkedin.com/in/aaron-graybill-194019180/" class="fa fa-linkedin"></a>
+<a href="https://github.com/aarongraybill" class="fa fa-github"></a>
+
+:::
 
 ::: {intro-text}
 Hi, I'm Aaron! I'm a senior research assistant at the Federal Reserve Bank of Philadelphia. I work with [Kyle Mangum](https://www.philadelphiafed.org/our-people/kyle-mangum) on applied microeconomics.

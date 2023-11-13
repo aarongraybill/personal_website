@@ -14,13 +14,8 @@ $font-family-sans-serif:  Atkinson Hyperlegible;
 $font-family: Atkinson Hyperlegible;
 $headings-font-family: Atkinson Hyperlegible;
 
+//$body-color: 
 $link-color: $secondary;
-$presentation-heading-color: #383d3d !default;
-
-
-
-$primary:       #000D4D !default;
-$secondary:     #FF00FF;//#55CE58 !default;
 
 //$success:       $green !default;
 //$info:          $cyan !default;
@@ -30,3 +25,48 @@ $secondary:     #FF00FF;//#55CE58 !default;
 //$dark:          $gray-800 !default;
 
 /*-- scss:rules --*/
+
+#frame {
+  border-style: solid;
+  border-width: 3px;
+  border-color: $primary;
+  border-radius: 5px;
+}
+
+
+/* All of the Stylings for the Social Cards */
+
+/* General Style for cards */
+.fa {
+  padding: 5px;
+  font-size: 50px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50px;
+}
+
+/* Add a hover effect if you want */
+.fa:hover {
+  opacity: 0.7;
+}
+
+/* Set a specific color for each brand */
+
+/* Linkedin Styling */
+.fa-linkedin {
+  background: #0a66c2;
+  color: $white;
+}
+
+/* Github Styling */
+.fa-github {
+  background: #171515;
+  color: $white;
+} 
+
+/* Intro Card */
+.intro-card {
+  line-height: 50px;
+  text-align: center;
+}
