@@ -3,12 +3,12 @@ project:
 
 website:
   title: "Aaron Graybill"
-  #navbar:
-   # left:
-   #   - href: index.qmd
-   #     text: Home
-   #   - href: cv.qmd
-   #     text: CV
+  navbar:
+    left:
+    - href: index.qmd
+      text: Home
+    - href: mini_projects/index.qmd
+      text: Mini Projects
 
 format:
   html:
@@ -17,6 +17,9 @@ format:
       light: 
         - flatly
         - custom.scss
+    include-in-header: 
+    - text: |
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       #dark: 
       #  - darkly
       #  - custom.css
