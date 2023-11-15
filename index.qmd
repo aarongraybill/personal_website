@@ -11,6 +11,7 @@ execute:
 <a href="https://www.linkedin.com/in/aaron-graybill-194019180/" class="fa fa-linkedin"></a>
 <a href="https://github.com/aarongraybill" class="fa fa-github"></a>
 
+aarongraybill12[at]gmail[dot]com
 :::
 
 ::: {intro-text}
