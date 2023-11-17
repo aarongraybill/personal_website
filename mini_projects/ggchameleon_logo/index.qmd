@@ -1,0 +1,229 @@
+---
+title: "Making a Logo for your R package---Using R"
+description: "In this post, I explain how I made the logo for the ggchameleon package using nothing but R!"
+author: "Aaron Graybill"
+date: "11/17/2023"
+execute: 
+  freeze: auto
+categories: 
+  - R
+  - Images
+  - ggplot2
+---
+
+## Introduction
+
+:::: {layout="[[30,-2,70]]" layout-valign="center"}
+
+::: {.intro-card}
+![](logo.png){fig-alt="The logo for ggchameleon"}
+
+:::
+
+::: {intro-text}
+
+I'm the author of the [ggchameleon R package](https://github.com/aarongraybill/ggchameleon). While making this package, I learned a great deal about how to massage [ggplot2](https://ggplot2.tidyverse.org/) charts to automatically display a customized "brand" (font, colors, layout, etc.). I also learned about how to do math to colors to make sure that gradients look normal to humans. Humans are weird, so the math to represent our color vision is equally weird. When I made the logo for this package, both of those two skills proved to rather useful. In this post, I'm going to walk through how I constructed that logo in a fully reproducible way using R.
+
+:::
+
+::::
+
+## Stylistic Constraints
+
+If you look at the logos for various R packages, you'll find that they tend to follow the format exemplified [here](https://github.com/rstudio/hex-stickers). From those exemplars, I decided that my logo should:
+
+1. Fit in a hexagon with a notable border
+2. Have the name of the package clearly visible
+3. Have a minimalist, geometric image representing a package
+
+From these constraints, a natural choice is use a chameleon as the primary image. However, I am not an artist, so I needed a way to convert an existing image into a minimalist, geometric representation of a chameleon.
+
+## The input image
+
+Wikipedia is a subsidiary of the [Wikimedia Foundation](https://www.wikimedia.org/). The Wikimedia Foundation does much more than just run Wikipedia, but pertinent now is the [Wikimedia Commons](https://commons.wikimedia.org/wiki/Main_Page) which hosts media (images, videos, sounds, etc.) for free, for the public benefit. When you see an image on a Wikipedia article, you are likely viewing an image hosted on the Wikimedia Commons.
+
+The other wonderful upside of the Wikimedia Commons is that many of the images are given the [Creative Commons License](https://creativecommons.org/licenses/by-sa/4.0/deed.en) which means that users can freely adapt these images to their own uses (even commercial!). In my case, I selected this incredible [image of a chameleon](https://en.wikipedia.org/wiki/File:Panther_chameleon_(Furcifer_pardalis)_male_Nosy_Be.jpg#file) as the base for my logo:
+
+[![The base image for my logo, by Charles Sharp](Panther_chameleon_(Furcifer_pardalis)_male_Nosy_Be.jpg){fig-alt="Image of a Chameleon"}](https://en.wikipedia.org/wiki/File:Panther_chameleon_(Furcifer_pardalis)_male_Nosy_Be.jpg#file)
+
+## Removing the image background using R
+
+The input image has a background that has beautiful [bokeh](https://en.wikipedia.org/wiki/Bokeh), but the rectangular shape of the image fits awkwardly into our hexagonal box. Let's remove the background of the image so that we only have the chameleon and the stick he's perched on. There may be ways to do this in R, but it's much simpler and more effective to outsource this task to a dedicated service. Thankfully, we can tell R to access such a service directly through an API. In particular, I use the free API available at [remove.bg](https://www.remove.bg/api). This service works perfectly but requires you to use an API key (so that they know who you are when you send a request). In general, it is bad practice to publicly share your API key, so the following code has the API key hidden in a private file. Substituting `readLines('bg_api_key')` with a string like `"my_cool_api_key"` should make the code work as expected.
+
+```{r post request}
+library(httr)
+
+payload <- list(
+  image_url = 'https://upload.wikimedia.org/wikipedia/commons/2/2d/Panther_chameleon_%28Furcifer_pardalis%29_male_Nosy_Be.jpg',
+  size = 'auto'
+)
+result = POST(url = 'https://api.remove.bg/v1.0/removebg',
+              body = payload,
+              add_headers(`X-Api-Key` = readLines('bg_api_key')),
+              encode= 'json'
+)
+
+print(result)
+```
+
+The status code 200 indicates that our request has been processed successfully. When our request is successful, the API returns binary data encoding the png image that we can write to our local machine for further processing. I do that as follows:
+
+```{r}
+#| warning: false
+#| fig-alt: "An image of a chameleon with the background removed"
+out <- content(result)
+png::writePNG(out,'chameleon.png')
+
+library(magick)
+chameleon <- image_read('chameleon.png')
+plot(chameleon)
+```
+
+You can see that the API did an excellent job of removing the background from the image! Onto the next task...
+
+## Converting the image to a geometric design
+
+The image above is still rather intricate (chameleons are beautifully intricate creatures), but one our goals was to simplify the image into a simpler set of geometric shapes. To do this, I had the idea to take the brightness of each pixel and treat that as a value that I could put into a contour map. A contour map is often used to visualize changes in elevation, as shown below in the underwater mountain [Resolution Guyot](https://en.wikipedia.org/wiki/Resolution_Guyot):
+
+[![An example of a contour map by Balon Greyjoy](Resolution_Guyot_contour_map.png){fig-alt="An example of a contour map" width="60%"}](https://commons.wikimedia.org/wiki/File:Resolution_Guyot_contour_map.png#)
+
+In the above example, redder areas indicate higher regions, and bluer areas indicate lower regions. You can tell that the contour map is able to convert the complex surface of the mountain into a series of simpler geometric shapes. I use this idea by treating pixel brightness as the "height".
+
+I admit, the code becomes a bit complicated here, so I have "folded" it so as not to clutter this post, but here's an outline of what the code does:
+
+```{r}
+#| code-fold: true
+#| code-summary: Compute Brightness
+#| message: false
+# Make the image smaller and extract the pixel level information
+df <- image_data(image_scale(chameleon,"100"))
+
+# The pixel data is a 3D array (red, blue, green)
+# we can paste each of those channels into the standard hex color 
+# of the format: #FF00FF
+# I then convert all of those hex codes into a matrix with the same dimensions
+# as the rescaled image
+m <- 
+  paste0("#",df[1,,],df[2,,],df[3,,]) %>% 
+  matrix(nrow = dim(df)[2],ncol=dim(df)[3])
+
+# The "row" function returns the row number of every element in the matrix
+# we treat that row number as an x coordinate
+# we do a similar thing with the columns using the "col" function
+# we have to be careful to transpose the matrix as needed,
+# We use the "c" function to flatten the matrix of row numbers into a vector
+# and we multiply by -1 because pixels start in the top left, but when we plot
+# we want to start in the bottom left
+outdf <- data.frame(x = c(t(row(m))),y = -1*c(t(col(m))), hex = c(t(m)))
+
+library(dplyr)
+brightness_df <- outdf %>%
+  # Convert the color to a "colorspace" that has a brightness component and
+  # is perceptually uniform, ie a one unit increase in brightness means the
+  # same thing for all colors
+  # then we extract the luminance (brightness) and treat that as 
+  # the outcome variable
+  mutate(luminance = {farver::decode_colour(hex) %>% farver::convert_colour("rgb","lab")}[,1]) %>%
+  mutate(luminance = floor(luminance))
+```
+
+1. Rescale the image so that it's small enough to generate simple contours
+2. Convert the image into a data frame of each pixel's coordinates and its color
+3. Compute the brightness (technically luminance) of each color in the image
+
+After we do all of that, we have a dataframe that looks like this:
+
+```{r}
+#| fig-alt: "Luminance Data Structure"
+brightness_df %>% 
+  head() %>% 
+  knitr::kable()
+```
+
+And we can plot the luminance directly and we will see something resembling a grayscale image of our scaly friend:
+
+```{r}
+#| fig-alt: "A scatter plot of pixel brightness"
+library(ggplot2)
+ggplot(brightness_df)+
+  geom_point(aes(x=x,y=y,color=luminance))+
+  scale_color_gradient(low="black",high = "white")
+```
+
+That's cool, but a little busy, let's simplify the image using ggplot's `geom_contour_filled` function:
+
+```{r}
+#| fig-alt: "A plot of contours of chameleon brightness"
+ggplot(brightness_df)+
+  geom_contour_filled(aes(x=x,y=y,z=luminance),bins=5)
+```
+That is much closer! What remains is for us to remove unnecessary elements of that plot, customize the colors, and add the design to the hexagonal tile.
+
+## Cleaning up, Customizing, and Hexagoning
+
+Again, I've "folded" the cleaning of the chart for sake of brevity, but feel free to unfold it and take a look at what manipulations are required. The result of the cleaning is the following:
+
+```{r}
+#| code-fold: true
+#| code-summary: Clean Chart
+#| message: false
+#| fig-alt: "Contour image of a chameleon with no background"
+# Custom color scheme
+pal <- c("#000D4D",'#26442E','#5A9550','#7DF279','#FFF200')
+pal[1] <- '#00000000' #Sets background color to transparent
+
+# Create cleaned-up plot
+p <- ggplot(brightness_df)+
+  # make sure there are no lines between contours
+  geom_contour_filled(aes(x=x,y=y,z=luminance),bins = 5,linewidth=0)+
+  # makes the image's aspect ratio true-to-life
+  coord_equal()+
+  # removes all extraneous plot info (axes, lines, etc.)
+  theme_void()+
+  # customize the fill colors
+  scale_fill_manual(values = pal)+
+  # don't print the legend
+  theme(legend.position = "None")+
+  # remove the x and y axis labels
+  xlab(NULL)+
+  ylab(NULL)
+
+# Print the updated chart
+p
+```
+Now, we need to place our simplified chameleon onto the hexagonal tile. Thankfully, the [hexSticker](https://github.com/GuangchuangYu/hexSticker) package makes it easy to generate these hexagonal tiles and add our own images on top. First we save a rotated version of the chameleon so that it's parallel to the hexagon, then we overlay that saved version onto the tile generated by hexSticker. We can do that as follows:
+
+```{r}
+#| message: false
+#| warning: false
+#| fig-alt: "The newly generated logo"
+
+# Save the rotated ggplot as a svg (infinite resolution)
+library(grid)
+svg("rotated_contour_chameleon.svg", bg = "#00000000")
+print(p, vp = viewport(angle = 30))
+capture_output = dev.off()
+
+# Add the brand font into available fonts
+sysfonts::font_add_google('Atkinson Hyperlegible',
+                          regular.wt = 700)
+
+# Generate the Hexagon with the image on top
+library(hexSticker)
+sticker("rotated_contour_chameleon.svg",
+        package="ggchameleon", # text on the image
+        s_height= .90, # svg image size
+        s_width = .90,
+        h_fill = '#000D4D', # background color
+        h_color = '#7DF279', # border color
+        s_x = 1.23, # location of image 
+        s_y = .8,
+        p_x = .99, # location of text
+        p_y = 1.42, 
+        p_size = 6, # font size
+        p_color = '#E7F6F4', # font color
+        p_family = 'Atkinson Hyperlegible' # font family
+) %>% plot()
+```
+
+And that's it! Feel free to remix this code with your own images. I think other animals or distinctive architecture could look interesting, but I'd be interested to see what else can be done using these techniques.
