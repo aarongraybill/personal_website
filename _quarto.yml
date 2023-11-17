@@ -3,6 +3,8 @@ project:
 
 website:
   title: "Aaron Graybill"
+  site-url: "https://www.aarongraybill.com"
+  description: "Information and content from Aaron Graybill"
   navbar:
     left:
     - href: index.qmd
@@ -24,4 +26,8 @@ format:
       #  - darkly
       #  - custom.css
     toc: true
+    
+comments:
+  giscus:
+    repo: aarongraybill/personal-website
 
