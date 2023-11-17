@@ -2,3 +2,7 @@
 
 # prevents posts from re-rendering unless explicitly told to do so (for more, see https://quarto.org/docs/projects/code-execution.html#freeze)
 freeze: auto
+
+comments:
+  giscus: 
+    repo: aarongraybill/personal_website

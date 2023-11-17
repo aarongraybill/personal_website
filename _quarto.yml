@@ -26,8 +26,3 @@ format:
       #  - darkly
       #  - custom.css
     toc: true
-    
-comments:
-  giscus:
-    repo: aarongraybill/personal_website
-
