@@ -11,6 +11,7 @@ website:
       text: Home
     - href: mini_projects/index.qmd
       text: Mini Projects
+  google-analytics: "G-9E0WQEN2SV"
 
 format:
   html:
