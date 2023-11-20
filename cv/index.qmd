@@ -1,0 +1,202 @@
+---
+title: Aaron Graybill
+date-modified: 11-20-23
+format:
+  html: default
+  pdf:
+    output-file: 'graybill_aaron_cv'
+    output-ext: 'pdf'
+---
+
+# Education
+
+-------------
+
+### University of Pennsylvania
+:::: {layout="[[50,-2,50]]"}
+
+::: {.cv-left}
+Non-matriculated Graduate Student
+
+*Philadelphia, Pennsylvania*
+:::
+
+::: {.cv-right}
+Sep. 2023--Present
+:::
+
+::::
+
+Relevant Coursework:
+
+PhD Microeconomics 1
+
+### Haverford College
+
+:::: {layout="[[50,-2,50]]"}
+
+::: {.cv-left}
+B.A. Economics, High Honors, Magna Cum Laude
+
+*Haverford, Pennsylvania*
+:::
+
+::: {.cv-right}
+2018--2022
+:::
+
+::::
+
+**Relevant Coursework:**
+
+Advanced Microeconomics, Mathematical Economics, Quantitative Economics, Thesis
+
+### Bryn Mawr College
+
+:::: {layout="[[50,-2,50]]"}
+
+::: {.cv-left}
+B.A. Mathematics, Dual degree with above
+
+*Bryn Mawr, Pennsylvania*
+:::
+
+::: {.cv-right}
+2018--2022
+:::
+
+::::
+
+**Relevant Coursework:**
+
+Analysis, Linear Algebra, Stochastic and Numerical Methods, Quantitative Finance, Probability, Applied Multivariate Statistical Analysis
+
+# Professional Experience
+
+---
+
+### Senior Research Assistant
+:::: {layout="[[50,-2,50]]"}
+
+::: {.cv-left}
+Federal Reserve Bank of Philadelphia
+
+*Philadelphia, Pennsylvania*
+:::
+
+::: {.cv-right}
+Jun. 2022--Present
+:::
+
+::::
+- Developed novel methodology to uniquely identify homeowners between properties using co-ownership record and mailing address history
+- Leveraged concepts from network theory and linear algebra to convert methodology into optimized algorithms
+- Authored more than 5,000 lines of  R code to apply algorithms to hundreds of gigabytes of property-level tax assessment and transaction data
+- Automated chart production for Monetary Policy briefings
+- Modernized internal data collection and processing by scraping available data, removing reliance on 3rd party vendors
+
+
+### Teaching Assistant
+
+:::: {layout="[[50,-2,50]]"}
+
+::: {.cv-left}
+Economics Department, Haverford College
+
+*Haverford, Pennsylvania*
+:::
+
+::: {.cv-right}
+Jan. 2023--May 2023
+:::
+
+::::
+
+- Lead problem solving sessions for Advanced Microeconomics, the terminal microeconomics course
+- Adapted to student needs, teaching concepts from probability theory, calculus, and intermediate microeconomics
+
+
+### Research Intern
+:::: {layout="[[50,-2,50]]"}
+
+::: {.cv-left}
+Federal Reserve Bank of Philadelphia
+
+*Philadelphia, Pennsylvania (Remote)*
+:::
+
+::: {.cv-right}
+Jun. 2020--May. 2022
+:::
+
+::::
+
+- Analyzed survey results from the Manufacturing Business Outlook Survey for publication of monthly reports about the local business climate
+- Generated a dashboard of statistics and charts for COVID-19’s economic impacts
+
+### Teaching Assistant
+
+:::: {layout="[[50,-2,50]]"}
+
+::: {.cv-left}
+Economics Department, Haverford College
+
+*Haverford, Pennsylvania*
+:::
+
+::: {.cv-right}
+Sep. 2021--Dec. 2021
+:::
+
+::::
+
+- Answered student questions about econometrics
+- Graded problem sets and provided constructive commentary
+
+
+### Economics Question Center Tutor
+
+:::: {layout="[[50,-2,50]]"}
+
+::: {.cv-left}
+Economics Department, Haverford College
+
+*Haverford, Pennsylvania*
+:::
+
+::: {.cv-right}
+Feb. 2020--May 2022
+:::
+
+::::
+
+- Selected to be one of first tutors to set up the Economics Question Center
+- Facilitated student collaboration on problem sets and answered questions for all courses
+
+# Awards
+
+---
+
+### Michael M. Weinstein Prize in Economics
+
+*Haverford College, May 2022.*
+
+For having made the greatest overall contribution to departmental life. Awarded for contributions in class, with peers, and for starting the widely used Economics Question Center.
+
+### Runner-Up, Holland Hunter Thesis Prize
+
+*Haverford College, May 2022.*
+
+For outstanding senior theses in economics. [My thesis](../assets/Graybill_Undergraduate_Thesis.pdf) was one of three selected as finalists for the award.
+
+
+
+# Technical Skills
+
+---
+
+**Programming:** R, Python, SQL, Julia, Stata, Visual Basic
+
+**Other:** Apache Hadoop, git (GitHub/GitLab), LaTeX
+
+**Language:** English - Native

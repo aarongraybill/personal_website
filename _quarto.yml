@@ -11,7 +11,8 @@ website:
       text: Home
     - href: mini_projects/index.qmd
       text: Mini Projects
-    - href: cv.qmd
+    - href: cv/index.qmd
+      text: CV
   google-analytics: "G-9E0WQEN2SV"
   favicon: assets/favicon.png
 
