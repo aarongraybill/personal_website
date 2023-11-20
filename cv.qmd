@@ -1,0 +1,64 @@
+---
+title: Curriculum Vitae
+format:
+  html: default
+  pdf: default
+---
+
+# Education
+
+-------------
+
+### B.A. Haverford College
+*Haverford, Pennsylvania*
+
+Economics (High Honors), May 2022 (Magna Cum Laude)
+
+
+    
+### B.A. Bryn Mawr College
+*Bryn Mawr, Pennsylvania*
+
+Mathematics (Dual Degree), May 2022
+
+# Professional Experience
+
+---
+
+### Senior Research Assistant, Federal Reserve Bank of Philadelphia
+- thing 1
+- thing 2
+
+### Teaching Assistant, Haverford College
+Adv. Micro
+
+### Teaching Assistant, Haverford College
+Micro
+
+### Teaching Assistant
+Econometrics
+
+### Research Intern, Federal Reserve Bank of Philadelphia
+
+
+### Economics Question Center
+
+# Awards
+
+---
+
+### Michael M. Weinstein Prize in Economics
+
+### Runner-Up, Holland Hunter Thesis Prize
+
+
+
+# Technical Skills
+
+---
+
+**Programming:** R, Python, SQL, Julia, Stata
+
+**Other:** Apache Hadoop, git (GitHub/GitLab), LaTeX
+
+**Language:** English - Native
