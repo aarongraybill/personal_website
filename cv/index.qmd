@@ -2,7 +2,8 @@
 title: Aaron Graybill
 date-modified: last-modified
 format:
-  html: default
+  html: 
+    email-obfuscation: references
   pdf:
     output-file: 'graybill_aaron_cv'
     output-ext: 'pdf'
@@ -14,8 +15,39 @@ format:
         \renewcommand{\rule}[1]{\oldrule{\linewidth}}
         % allow for text justification in multiple columns
         \usepackage{ragged2e}
+      
 ---
 
+:::: {layout="[[50,-2,50]]" layout-valign="center"}
+
+::: {.cv-left}
+<!--
+Here the RaggedRight is only used in PDF output, in which
+case it's used to correctly left and right align the columns.
+RaggedRight means the right is ragged, and the left is straight,
+ie left alignment
+-->
+\RaggedRight 
+
+Aaron Graybill <br>\newline
+Research Department <br>\newline
+Federal Reserve Bank of Philadelphia <br>\newline
+Ten Independence Mall, PA 19106
+
+:::
+
+::: {.cv-right}
+<!--
+When the left is ragged, the right must be straight,
+ie, right aligntment.
+-->
+\RaggedLeft 
+
+Tel.: 215-589-3887 <br>\newline
+Email: aarongraybill12[at]gmail[dot]com
+:::
+
+::::
 
 
 # Education
@@ -26,22 +58,12 @@ format:
 :::: {layout="[[50,-2,50]]"}
 
 ::: {.cv-left}
-<!--
-Here the RaggedRight is only used in PDF output, in which
-case it's used to correctly left and right align the columns.
-RaggedRight means the right is ragged, and the left is straight,
-ie left alignment
--->
 \RaggedRight Non-matriculated Graduate Student
 \newline <!--LaTeX needs explicit newline here -->
 *Philadelphia, Pennsylvania*
 :::
 
 ::: {.cv-right}
-<!--
-When the left is ragged, the right must be straight,
-ie, right aligntment.
--->
 \RaggedLeft Sep. 2023--Present
 :::
 
@@ -206,6 +228,8 @@ Jun. 2022--Present
 (Undergraduate Thesis) **Graybill, A.** "Exposure Doesn’t Pay the Bills
 Artistic Production on Streaming Platforms Under Algorithmically-Induced Audience
 Uncertainty"
+
+\newpage
 
 # Awards
 
