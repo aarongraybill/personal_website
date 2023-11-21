@@ -23,7 +23,7 @@ My research interests lie at the intersection of social science and technology. 
 
 I'm the author of [ggchameleon](https://github.com/aarongraybill/ggchameleon), an R package that takes the headache out of making consistent-looking professional ggplots.
 
-You can download a copy of my CV [here](assets/Graybill_Resume_2023_10.pdf).
+You can see my CV [here](cv).
 
 Outside of research, I have a rotating cast of hobbies including film photography and development, recreational mathematics, various coding projects, and guitar.
 :::
