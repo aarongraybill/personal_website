@@ -1,12 +1,22 @@
 ---
 title: Aaron Graybill
-date-modified: 11-20-23
+date-modified: last-modified
 format:
   html: default
   pdf:
     output-file: 'graybill_aaron_cv'
     output-ext: 'pdf'
+    keep-tex: true
+    include-in-header:
+      text: |
+        % make horizontal line full width
+        \let\oldrule=\rule
+        \renewcommand{\rule}[1]{\oldrule{\linewidth}}
+        % allow for text justification in multiple columns
+        \usepackage{ragged2e}
 ---
+
+
 
 # Education
 
@@ -16,13 +26,23 @@ format:
 :::: {layout="[[50,-2,50]]"}
 
 ::: {.cv-left}
-Non-matriculated Graduate Student
-
+<!--
+Here the RaggedRight is only used in PDF output, in which
+case it's used to correctly left and right align the columns.
+RaggedRight means the right is ragged, and the left is straight,
+ie left alignment
+-->
+\RaggedRight Non-matriculated Graduate Student
+\newline <!--LaTeX needs explicit newline here -->
 *Philadelphia, Pennsylvania*
 :::
 
 ::: {.cv-right}
-Sep. 2023--Present
+<!--
+When the left is ragged, the right must be straight,
+ie, right aligntment.
+-->
+\RaggedLeft Sep. 2023--Present
 :::
 
 ::::
@@ -36,12 +56,14 @@ PhD Microeconomics 1
 :::: {layout="[[50,-2,50]]"}
 
 ::: {.cv-left}
-B.A. Economics, High Honors, Magna Cum Laude
-
+\RaggedRight B.A. Economics, High Honors, Magna Cum Laude
+\newline
 *Haverford, Pennsylvania*
 :::
 
 ::: {.cv-right}
+\RaggedLeft  
+
 2018--2022
 :::
 
@@ -56,12 +78,14 @@ Advanced Microeconomics, Mathematical Economics, Quantitative Economics, Thesis
 :::: {layout="[[50,-2,50]]"}
 
 ::: {.cv-left}
-B.A. Mathematics, Dual degree with above
-
+\RaggedRight B.A. Mathematics, Dual degree with above
+\newline
 *Bryn Mawr, Pennsylvania*
 :::
 
 ::: {.cv-right}
+\RaggedLeft 
+
 2018--2022
 :::
 
@@ -79,12 +103,14 @@ Analysis, Linear Algebra, Stochastic and Numerical Methods, Quantitative Finance
 :::: {layout="[[50,-2,50]]"}
 
 ::: {.cv-left}
-Federal Reserve Bank of Philadelphia
-
+\RaggedRight Federal Reserve Bank of Philadelphia
+\newline
 *Philadelphia, Pennsylvania*
 :::
 
 ::: {.cv-right}
+\RaggedLeft 
+
 Jun. 2022--Present
 :::
 
@@ -101,13 +127,13 @@ Jun. 2022--Present
 :::: {layout="[[50,-2,50]]"}
 
 ::: {.cv-left}
-Economics Department, Haverford College
-
+\RaggedRight Economics Department, Haverford College
+\newline
 *Haverford, Pennsylvania*
 :::
 
 ::: {.cv-right}
-Jan. 2023--May 2023
+\RaggedLeft Jan. 2023--May 2023
 :::
 
 ::::
@@ -120,13 +146,13 @@ Jan. 2023--May 2023
 :::: {layout="[[50,-2,50]]"}
 
 ::: {.cv-left}
-Federal Reserve Bank of Philadelphia
-
+\RaggedRight Federal Reserve Bank of Philadelphia
+\newline
 *Philadelphia, Pennsylvania (Remote)*
 :::
 
 ::: {.cv-right}
-Jun. 2020--May. 2022
+\RaggedLeft Jun. 2020--May. 2022
 :::
 
 ::::
@@ -139,13 +165,13 @@ Jun. 2020--May. 2022
 :::: {layout="[[50,-2,50]]"}
 
 ::: {.cv-left}
-Economics Department, Haverford College
-
+\RaggedRight Economics Department, Haverford College
+\newline
 *Haverford, Pennsylvania*
 :::
 
 ::: {.cv-right}
-Sep. 2021--Dec. 2021
+\RaggedLeft Sep. 2021--Dec. 2021
 :::
 
 ::::
@@ -159,19 +185,27 @@ Sep. 2021--Dec. 2021
 :::: {layout="[[50,-2,50]]"}
 
 ::: {.cv-left}
-Economics Department, Haverford College
-
+\RaggedRight Economics Department, Haverford College
+\newline
 *Haverford, Pennsylvania*
 :::
 
 ::: {.cv-right}
-Feb. 2020--May 2022
+\RaggedLeft Feb. 2020--May 2022
 :::
 
 ::::
 
 - Selected to be one of first tutors to set up the Economics Question Center
 - Facilitated student collaboration on problem sets and answered questions for all courses
+
+# Working Papers
+
+---
+
+(Undergraduate Thesis) **Graybill, A.** "Exposure Doesn’t Pay the Bills
+Artistic Production on Streaming Platforms Under Algorithmically-Induced Audience
+Uncertainty"
 
 # Awards
 
@@ -190,12 +224,11 @@ For having made the greatest overall contribution to departmental life. Awarded 
 For outstanding senior theses in economics. [My thesis](../assets/Graybill_Undergraduate_Thesis.pdf) was one of three selected as finalists for the award.
 
 
-
 # Technical Skills
 
 ---
 
-**Programming:** R, Python, SQL, Julia, Stata, Visual Basic
+**Programming:** R, Python, Julia, SQL, Stata, Visual Basic
 
 **Other:** Apache Hadoop, git (GitHub/GitLab), LaTeX
 
