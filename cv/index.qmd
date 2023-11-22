@@ -252,7 +252,7 @@ For outstanding senior theses in economics. One of three selected as finalists f
 
 ---
 
-**Programming:** R, Python, Julia, SQL, Stata, Visual Basic
+**Programming:** R, Python, Julia, SQL, Shell Scripting (Bash/PowerShell) Stata, Visual Basic
 
 **Other:** Apache Hadoop, git (GitHub/GitLab), LaTeX
 
