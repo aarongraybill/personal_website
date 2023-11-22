@@ -17,7 +17,7 @@ aarongraybill12[at]gmail[dot]com
 ::: {intro-text}
 Hi, I'm Aaron! I'm a senior research assistant at the Federal Reserve Bank of Philadelphia. I work with [Kyle Mangum](https://www.philadelphiafed.org/our-people/kyle-mangum) on applied microeconomics.
 
-I graduated magna cum laude from Haverford College in 2022 with majors in economics and mathematics and a minor in statistics. My [undergraduate thesis](assets/Graybill_Undergraduate_Thesis.pdf) constructed a theoretical model to understand how "the algorithm" affects content creators' decisions to produce media.
+I graduated from Haverford College in 2022 with majors in economics and mathematics and a minor in statistics. My [undergraduate thesis](assets/Graybill_Undergraduate_Thesis.pdf) constructed a theoretical model to understand how "the algorithm" affects content creators' decisions to produce media.
 
 My research interests lie at the intersection of social science and technology. I hope to contribute to research on misinformation, radicalization on social media, and the impacts of digital media on consumer welfare.
 
