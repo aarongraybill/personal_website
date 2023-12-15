@@ -121,7 +121,7 @@ Analysis, Linear Algebra, Stochastic and Numerical Methods, Quantitative Finance
 
 ---
 
-### Senior Research Assistant
+### Research Analyst
 :::: {layout="[[50,-2,50]]"}
 
 ::: {.cv-left}
