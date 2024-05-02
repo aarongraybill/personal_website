@@ -15,11 +15,26 @@ editor:
     wrap: 72
 ---
 
-## An Introduction to Dataframe Joins
+## Intro
+
+:::: {layout="[[30,-2,70]]" layout-valign="center"}
+
+::: {.intro-card}
+![](puzzle.svg){fig-alt="A puzzle fitting together"}
+
+:::
+
+::: {intro-text}
 
 In this post, I'll assume that you have some exposure to data wrangling
 in R using dplyr. If you're familiar with `mutate`, `summarize`, and in
 particular, `(left/right/inner/full)_join`, you should have no problem.
+
+:::
+
+::::
+
+## Introducing the Working Data
 
 Before I get into the joins, I will introduce the primary datasets for
 this tutorial. You can expand the code below to see how I create the
