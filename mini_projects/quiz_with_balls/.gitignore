@@ -1,2 +1,5 @@
 /.quarto/
 quiz_venv
+*_files
+*_freeze
+*.html
