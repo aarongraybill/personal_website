@@ -7,6 +7,7 @@
 # Quarto Ignorables
 /.quarto/
 /_site/
+/_freeze/
 
 # Mac Specific Files
 .DS_Store
