@@ -15,6 +15,10 @@ editor:
     wrap: 72
 ---
 
+```{r}
+source("renv/activate.R")
+```
+
 ## Intro
 
 :::: {layout="[[30,-2,70]]" layout-valign="center"}
