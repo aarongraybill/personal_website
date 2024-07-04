@@ -1,5 +1,6 @@
 project:
   title: "quiz_with_balls"
+  execute-dir: file
 
 
 

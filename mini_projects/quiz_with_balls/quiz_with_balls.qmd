@@ -202,6 +202,8 @@ game states in the next period.
 Let's implement this function $f$ in python:
 
 ```{python}
+#| eval: false
+#| python.reticulate: false
 import numpy as np
 import math
 
@@ -252,6 +254,8 @@ take a look if you are interested.
 ```{python}
 #| code-fold: true
 #| code-summary: "Create Team Class"
+#| eval: false
+#| python.reticulate: false
 from string import ascii_uppercase
 from numpy.random import choice
 import pandas as pd
@@ -328,6 +332,8 @@ class Team:
 ```{python}
 #| code-fold: true
 #| code-summary: "Create Game Class"
+#| eval: false
+#| python.reticulate: false
 class Game:
   def __init__(self, n_balls=6, n_teams=2):
     assert n_teams <= 26 # needed for team naming
@@ -376,6 +382,8 @@ class Game:
 ```{python}
 #| code-fold: true
 #| code-summary: "Simulation Logic"
+#| eval: false
+#| python.reticulate: false
 
 def simulate(n: int = 10000, WorkingGame = Game):
   summaries = []
@@ -403,8 +411,12 @@ the game, but to make sure that everything is working as expected, let's
 simulate 10,000 games completely randomly.
 
 ```{python}
+#| eval: false
+#| python.reticulate: false
 np.random.seed(0)
 df = simulate(n=10000)
+
+df.to_csv('unfavored.csv', index = False)
 ```
 
 Here, since we started symmetrically, we should expect teams $A$ and $B$
@@ -415,16 +427,17 @@ games won by team $A$ and team $B$.
 #| warning: false
 #| code-fold: true
 #| code-summary: "Plot Simulated Games"
-library(reticulate)
 library(ggplot2)
 library(ggchameleon)
 
 library(dplyr)
+
+df <- read.csv('unfavored.csv') 
 win_counts <- 
-  py$df |> 
+  df |> 
   summarize(winner = case_when(
-    any(name=="A" & won) ~ "A Wins",
-    any(name=="B" & won) ~ "B Wins",
+    any(name=="A" & won=='True') ~ "A Wins",
+    any(name=="B" & won=='True') ~ "B Wins",
     T ~ "Tie"
   ),
   .by = game_no) |> 
@@ -443,7 +456,7 @@ p_val_fmt <- format(b_test$p.value, digits = 4)
 fail_to_reject <- all( (win_counts$ci_lower<=.5) & (win_counts$ci_upper>=.5) )
 stopifnot(fail_to_reject)
 
-n_sims <- nrow(py$df)/2
+n_sims <- nrow(df)/2
 n_ties <- n_sims - win_counts$total[1]
 
 gg <- 
@@ -475,6 +488,8 @@ rest of the game.
 
 
 ```{python}
+#| eval: false
+#| python.reticulate: false
 # Create a class inheriting from the standard game 
 class FavorA(Game):
   def __init__(self):
@@ -488,6 +503,8 @@ class FavorA(Game):
 # Run simulation favoring A
 np.random.seed(1)
 df = simulate(n=10000, WorkingGame = FavorA)
+
+df.to_csv('favor_a.csv', index = False)
 ```
 
 Reproducing the same plot from before, we have:
@@ -495,11 +512,13 @@ Reproducing the same plot from before, we have:
 ```{r}
 #| code-fold: true
 #| code-summary: "Plot Games Favoring A"
+
+df <- read.csv('favor_a.csv')
 win_counts <- 
-  py$df |> 
+  df |> 
   summarize(winner = case_when(
-    any(name=="A" & won) ~ "A Wins",
-    any(name=="B" & won) ~ "B Wins",
+    any(name=="A" & won=='True') ~ "A Wins",
+    any(name=="B" & won=='True') ~ "B Wins",
     T ~ "Tie"
   ),
   .by = game_no) |> 
@@ -517,7 +536,7 @@ lower_bound <- format(b_test$conf.int[1]*100, digits = 4, scientific = F)
 # Only need to check the first test since they're actually the same
 stopifnot(b_test$p.value<.05)
 
-n_sims <- nrow(py$df)/2
+n_sims <- nrow(df)/2
 n_ties <- n_sims - win_counts$total[1]
 
 gg <- 
@@ -554,14 +573,14 @@ If you're familiar with the YouTuber John Bois, this is essentially a
 #| code-summary: "Plot Final Scores Favoring A"
 #| warning: false
 counts <- 
-  py$df |> 
+  df |> 
   select(game_no, name, points) |> 
   tidyr::pivot_wider(names_from = "name",
                      values_from = "points") |> 
   summarize(n = n(), .by = c(A,B))
 
-min_points <-  min(py$df$points)
-max_points <- max(py$df$points)
+min_points <-  min(df$points)
+max_points <- max(df$points)
 
 possible_scores <- expand.grid(A = min_points:max_points,
                                B = min_points:max_points)
@@ -584,7 +603,7 @@ gg <-
   coord_equal(expand=FALSE)+
   xlab("Team A Final Score")+
   ylab("Team B Final Score")+
-  labs(fill="Games", caption = glue::glue("From {nrow(py$df)/2} Simulations"))+
+  labs(fill="Games", caption = glue::glue("From {nrow(df)/2} Simulations"))+
   theme(legend.text = element_text(color = "white"),
         legend.title = element_text(color = "white"),
         legend.key = element_rect(color="white"))+
@@ -601,23 +620,23 @@ This also visualizes how complicated the scoring is for *The Quiz With Balls*. T
 
 ## Wrapping Up
 
-```{python}
+```{r}
 #| include: false
 
-prob_favor = 1 - (f(5,5,6)**2) - (f(4,5,6)**2)
+prob_favor = 1 - (0.1666666^2) - (0.8333333^2)
 prob_favor = round(100*prob_favor, 2)
 
-final_prob = round(prob_favor * float(r.lower_bound) / 100.0,2)
+final_prob = round(prob_favor * as.numeric(lower_bound) / 100.0,2)
 
-assert final_prob > 25
+stopifnot(final_prob > 25)
 ```
 
 An effective game show should keep the audience in suspense. Knowing the winner
 of an hour-long program at minute 10 is not ideal. The most likely outcome of
 the first round is both teams losing a player. However, there's a 
-`r py$prob_favor`% chance that one team is favored going into the second
+`r prob_favor`% chance that one team is favored going into the second
 round. And in those cases, the winner is determined more than 
-`r lower_bound`% of the time. So all in all, there's a `r py$final_prob`%
+`r lower_bound`% of the time. So all in all, there's a `r final_prob`%
 chance that you will know the winner after the first round.
 
 And if you're empirically minded, we can look at the results of the actual show.
