@@ -1,13 +1,14 @@
 ---
 title: Aaron Graybill
 date-modified: last-modified
+execute: 
+  freeze: auto
 format:
   html: 
     email-obfuscation: references
   pdf:
     output-file: 'graybill_aaron_cv'
     output-ext: 'pdf'
-    keep-tex: true
     include-in-header:
       text: |
         % make horizontal line full width
@@ -17,6 +18,11 @@ format:
         \usepackage{ragged2e}
       
 ---
+
+```{r}
+#| include: false
+invisible(2+2)
+```
 
 :::: {layout="[[50,-2,50]]" layout-valign="center"}
 
