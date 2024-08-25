@@ -1,7 +1,7 @@
 ---
 title: "dplyr's Lesser Known Joins and When to Use Them"
 from: markdown+emoji
-description: "I explain `dplyr`'s `semi_join`, `anti_join`, and `join_by` commands, and when they might be useful to anyone who works with data."
+description: "I explain dplyr's semi_join, anti_join, and join_by commands, and when they might be useful to anyone who works with data."
 author: "Aaron Graybill"
 date: "4/28/2024"
 execute: 
@@ -15,7 +15,7 @@ editor:
     wrap: 72
 ---
 
-```{r}
+```{r, echo=FALSE}
 source("renv/activate.R")
 ```
 
