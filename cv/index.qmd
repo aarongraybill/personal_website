@@ -75,9 +75,9 @@ Email: aarongraybill12[at]gmail[dot]com
 
 ::::
 
-Relevant Coursework:
+**Relevant Coursework:**
 
-PhD Microeconomics 1
+PhD Microeconomics, Algorithmic Game Theory
 
 ### Haverford College
 
@@ -108,6 +108,7 @@ Advanced Microeconomics, Mathematical Economics, Quantitative Economics, Thesis
 ::: {.cv-left}
 \RaggedRight B.A. Mathematics, Dual degree with above
 \newline
+
 *Bryn Mawr, Pennsylvania*
 :::
 
