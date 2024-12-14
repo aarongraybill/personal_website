@@ -15,11 +15,11 @@ aarongraybill12[at]gmail[dot]com
 :::
 
 ::: {intro-text}
-Hi, I'm Aaron! I'm a research analyst at the Federal Reserve Bank of Philadelphia. I work with [Kyle Mangum](https://www.philadelphiafed.org/our-people/kyle-mangum) on applied microeconomics.
+Hi, I'm Aaron! I'm a research associate at the Federal Reserve Bank of Philadelphia. I work with [Kyle Mangum](https://www.philadelphiafed.org/our-people/kyle-mangum) on applied microeconomics.
 
 I graduated from Haverford College in 2022 with majors in economics and mathematics and a minor in statistics. My [undergraduate thesis](assets/Graybill_Undergraduate_Thesis.pdf) constructed a theoretical model to understand how "the algorithm" affects content creators' decisions to produce media.
 
-My research interests lie at the intersection of social science and technology. I hope to contribute to research on misinformation, radicalization on social media, and the impacts of digital media on consumer welfare.
+My research interests lie at the intersection of social science and technology. I hope to contribute to research on misinformation, digital privacy legislation, and the creator economy. I am currently applying to PhD programs in economics/marketing/information systems. 
 
 I'm the author of [ggchameleon](https://github.com/aarongraybill/ggchameleon), an R package that takes the headache out of making consistent-looking professional ggplots.
 
