@@ -101,6 +101,8 @@ PhD Microeconomics, Algorithmic Game Theory
 
 Advanced Microeconomics, Mathematical Economics, Quantitative Economics, Thesis
 
+\newpage
+
 ### Bryn Mawr College
 
 :::: {layout="[[50,-2,50]]"}
@@ -227,16 +229,6 @@ Jun. 2022--Present
 
 - Selected to be one of first tutors to set up the Economics Question Center
 - Facilitated student collaboration on problem sets and answered questions for all courses
-
-# Working Papers
-
----
-
-(Undergraduate Thesis) **Graybill, A.** "Exposure Doesn’t Pay the Bills
-Artistic Production on Streaming Platforms Under Algorithmically-Induced Audience
-Uncertainty"
-
-\newpage
 
 # Awards
 
