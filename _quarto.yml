@@ -14,7 +14,7 @@ website:
     - href: cv/index.qmd
       text: CV
   google-analytics: "G-9E0WQEN2SV"
-  favicon: assets/favicon.png
+  favicon: favicon.ico
   repo-url: https://github.com/aarongraybill/personal_website
   repo-actions: source
 
