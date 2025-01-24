@@ -19,7 +19,7 @@ TeachingDemos::shadowtext(x = 1.1, y = -.95, "G", cex = scale,
 writeLines(s(), 'favicon.svg')
 invisible(dev.off())
 
-svg_fav <- magick::image_read_svg('favicon.svg', width = 32, height = 32)
+svg_fav <- magick::image_read_svg('favicon.svg', width = 96, height = 96)
 svg_fav <- magick::image_background(svg_fav, "none")
 #print(svg_fav)
 magick::image_write(svg_fav, '../../favicon.ico', format = 'ico')
