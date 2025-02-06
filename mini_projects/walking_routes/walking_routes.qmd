@@ -1,0 +1,37 @@
+---
+title: "Walking Routes"
+description: "Generating \"Optimal\" Walking Arounds Using Graph Theory"
+author: "Aaron Graybill"
+date: "02/06/2025"
+draft: true
+execute: 
+  freeze: auto
+categories: 
+  - python
+  - GIS
+  - graph-theory
+---
+
+## Introduction
+
+:::: {layout="[[30,-2,70]]" layout-valign="center"}
+
+::: {.intro-card}
+
+![](placeholder.svg){fig-alt="placeholder"}
+
+:::
+
+::: {intro-text}
+
+I have highly idiosyncratic preferences when it comes to my exercise routine. 
+I like to 
+walk or run outdoors in a closed loop of a pre-determined length with minimal
+backtracking on the same roads. In this post I develop an equally idiosyncratic
+algorithm to generate candidate routes for my runs. I incorporate ideas from
+graph/network theory and Geographic Information Systems to generate routes 
+satisfying my criteria.
+
+:::
+
+::::
