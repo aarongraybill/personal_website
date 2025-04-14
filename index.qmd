@@ -3,7 +3,7 @@ execute:
   echo: false
   message: false
   warning: false
-description-meta: "Aaron Graybill's landing page. A basic description of his academic experience at Haverford College, and professional experience at the Federal Reserve Bank of Philadelphia. It also discusses his research interest in digital markets and platform design."
+description-meta: "Aaron Graybill's landing page. A basic description of his professional experience at the Federal Reserve Bank of Philadelphia and his upcoming PhD in quantitative marketing at Stanford Graduate School of Business. It also discusses his research interest in digital markets and platform design."
 ---
 :::: {layout="[[50,-2,50]]" layout-valign="center"}
 
@@ -16,11 +16,9 @@ aarongraybill12[at]gmail[dot]com
 :::
 
 ::: {intro-text}
-Hi, I'm Aaron! I'm a research associate at the Federal Reserve Bank of Philadelphia. I work with [Kyle Mangum](https://www.philadelphiafed.org/our-people/kyle-mangum) on applied microeconomics.
+Hi, I'm Aaron! I'm a research associate at the Federal Reserve Bank of Philadelphia. I work with [Kyle Mangum](https://www.philadelphiafed.org/our-people/kyle-mangum) on applied microeconomics. In the fall, I will be starting a quantitative marketing PhD at Stanford Graduate School of Business.
 
-I graduated from Haverford College in 2022 with majors in economics and mathematics and a minor in statistics. My [undergraduate thesis](assets/Graybill_Undergraduate_Thesis.pdf) constructed a theoretical model to understand how "the algorithm" affects content creators' decisions to produce media.
-
-My research interests lie at the intersection of social science and technology. I hope to contribute to research on misinformation, digital privacy legislation, and the creator economy. I am currently applying to PhD programs in economics/marketing/information systems. 
+My research interests lie at the intersection of social science and technology. I hope to contribute to research on misinformation, digital privacy legislation, and the creator economy.
 
 I'm the author of [ggchameleon](https://github.com/aarongraybill/ggchameleon), an R package that takes the headache out of making consistent-looking professional ggplots.
 
