@@ -9,8 +9,6 @@ website:
     left:
     - href: index.qmd
       text: Home
-    - href: mini_projects/index.qmd
-      text: Mini Projects
     - href: cv/index.qmd
       text: CV
   google-analytics: "G-9E0WQEN2SV"
