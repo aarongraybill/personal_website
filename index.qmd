@@ -20,11 +20,14 @@ Hi, I'm Aaron! I'm a research associate at the Federal Reserve Bank of Philadelp
 
 My research interests lie at the intersection of social science and technology. I hope to contribute to research on misinformation, digital privacy legislation, and the creator economy.
 
-I'm the author of [ggchameleon](https://github.com/aarongraybill/ggchameleon), an R package that takes the headache out of making consistent-looking professional ggplots.
-
 Here is a link to [my CV](cv).
 
-Outside of research, I have a rotating cast of hobbies including film photography and development, recreational mathematics, various coding projects, and guitar.
+If you're curious about my time as a Fed RA or the PhD application process, feel
+free to reach out. I'm especially glad to connect with people with different educational
+or demographic backgrounds to my own. I'm always happy to chat and help however I can.
+
+Outside of research, I have a rotating cast of hobbies including film photography
+and development, recreational mathematics, various coding projects, and guitar.
 :::
 
 ::::
