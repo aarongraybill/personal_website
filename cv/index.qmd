@@ -49,7 +49,6 @@ ie, right aligntment.
 -->
 \RaggedLeft 
 
-Tel.: 215-589-3887 <br>\newline
 Email: aarongraybill12[at]gmail[dot]com
 :::
 

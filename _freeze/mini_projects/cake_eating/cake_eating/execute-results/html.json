@@ -1,0 +1,15 @@
+{
+  "hash": "d2ee463e749eb3071bc52397bceed07e",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Visualizing Dynamic Programming\"\ndescription: \"Placeholder\"\nauthor: \"Aaron Graybill\"\ndate: \"02/22/2025\"\ndraft: true\nexecute: \n  freeze: auto\ncategories: \n  - math\n---\n\n\n\n\n\n## Introduction\n\n:::: {layout=\"[[30,-2,70]]\" layout-valign=\"center\"}\n\n::: {.intro-card}\n\n![](placeholder.png){fig-alt=\"placeholder text\"}\n\n:::\n\n::: {intro-text}\n\nPlaceholder intro.\n\n:::\n\n::::\n\nSecond paragraph of Placeholder intro.\n\n## An Introduction to Cake Eating\n\n\n\n```{ojs}\nd3 = require(\"d3\")\n```\n\n```{ojs}\nInputs.radio([\"red\", \"green\", \"blue\"], {label: \"Color\"})\n```\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
