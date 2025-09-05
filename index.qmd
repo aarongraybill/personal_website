@@ -3,7 +3,7 @@ execute:
   echo: false
   message: false
   warning: false
-description-meta: "Aaron Graybill's landing page. A basic description of his professional experience at the Federal Reserve Bank of Philadelphia and his upcoming PhD in quantitative marketing at Stanford Graduate School of Business. It also discusses his research interest in digital markets and platform design."
+description-meta: "Aaron Graybill's landing page. A basic description of his professional experience at the Federal Reserve Bank of Philadelphia and his PhD in quantitative marketing at Stanford Graduate School of Business. It also discusses his research interest in digital markets and platform design."
 ---
 :::: {layout="[[50,-2,50]]" layout-valign="center"}
 
