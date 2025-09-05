@@ -16,7 +16,8 @@ aarongraybill12[at]gmail[dot]com
 :::
 
 ::: {intro-text}
-Hi, I'm Aaron! I'm a research associate at the Federal Reserve Bank of Philadelphia. I work with [Kyle Mangum](https://www.philadelphiafed.org/our-people/kyle-mangum) on applied microeconomics. In the fall, I will be starting a quantitative marketing PhD at Stanford Graduate School of Business.
+Hi, I'm Aaron! I'm a first year PhD student at Stanford Graduate School of Business studying quantitative marketing. Before Stanford, I worked at the Federal Reserve
+Bank of Philadelphia with [Kyle Mangum](https://www.philadelphiafed.org/our-people/kyle-mangum) on applied microeconomics.
 
 My research interests lie at the intersection of social science and technology. I hope to contribute to research on misinformation, digital privacy legislation, and the creator economy.
 
