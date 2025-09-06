@@ -9,7 +9,7 @@ website:
     left:
     - href: index.qmd
       text: Home
-    - href: cv/index.qmd
+    - href: Graybill_CV.pdf
       text: CV
   google-analytics: "G-9E0WQEN2SV"
   favicon: favicon.ico
