@@ -57,6 +57,8 @@ text_df$y <- sin(df$x*2*pi/PAGE_WIDTH * 4)/y_scale
 text_df$y <- text_df$y - mean(text_df$y) + (PAGE_HEIGHT / 2)
 
 library(showtext)
+library(curl)
+library(jsonlite)
 font_add_google("Intel One Mono",
                 db_cache = F)
 showtext_auto()
