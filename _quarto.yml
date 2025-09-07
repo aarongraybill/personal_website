@@ -1,5 +1,9 @@
 project:
   type: website
+  pre-render:
+    - bash build-cv.sh
+  resources:
+    - Graybill_CV.pdf
 
 website:
   title: "Aaron Graybill"

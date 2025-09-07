@@ -1,0 +1,182 @@
+
+%-------------------------------------
+% Resum in LaTeX (XeLaTeX)
+% Author:  HF Yuan
+% Project: https://github.com/xyz-yuanhf/yuan-resume
+% Base on: https://github.com/mattyHerzig/mattys_resume
+%          http://www.jianxu.net/en/
+% License: MIT
+%------------------------------------
+
+\documentclass[a4paper, 10pt]{article}
+\usepackage{myresume}  % Style package
+\usepackage{hyperref}
+
+% --------------------  START  --------------------
+\begin{document}
+
+% -------------------- HEADING --------------------
+\begin{flushright}
+  \setstretch{0.6}
+  \item {\Calluna aaron[dot]graybill[at]stanford.edu}  % E-mail address
+  \item {\Calluna \url{https://aarongraybill.com}}  % Home page
+\end{flushright}\vspace{-45pt}
+
+\begin{flushleft}  % Rplace here with your name (and identity if required)
+  {\Atkinson \fontsize{30pt}{30pt}\selectfont \textsc{Aaron Graybill}} \quad {\Atkinson \fontsize{14.5pt}{14.5pt}\selectfont \textsc{}}
+  \noindent\rule{\textwidth}{0.4pt}
+\end{flushleft}
+
+% -------------------- EDUCATION --------------------
+\sectionBlock{
+\section{Education}
+}{
+\eduHeading
+    {Stanford University Graduate School of Business}{Stanford, California, USA}
+    {PhD Student, Quantitative Marketing}{2025--Present}
+% \itemListStart
+%     \namedItem{Relevant Coursework: }{Microeconomics}
+% \itemListEnd
+
+\eduHeading
+  {Haverford College}{Haverford, PA, USA}
+  {B.A. in Economics and Mathematics}{2018--2022}
+\itemListStart
+  \namedItem{Relevant Economics Coursework: }{Advanced Microeconomics, Mathematical Economics, Quantitative Economics, Thesis}
+  \namedItem{Relevant Math Coursework: }{Analysis, Linear Algebra, Stochastic and Numerical Methods, Quantitative Finance, Probability, Applied Multivariate Statistical Analysis}
+\itemListEnd
+
+}
+
+% -------------------- PUBLICATIONS --------------------
+% \sectionBlock{
+% \section{Publications}
+% }{
+% \pubListStart
+% \justifying
+% \item \textbf{Xiao Yuan}, Hua Li. The Future Urban Transportation Systems: Innovations and Challenges. \textit{Journal of Operations Research and Optimization}, 2024.
+% \item Hua Li, \textbf{Xiao Yuan}, John Doe. Optimizing Logistics and Supply Chain Networks Using Machine Learning Techniques. \textit{International Conference on Operations Research and Machine Learning}, 2023.
+% \item John Doe, \textbf{Xiao Yuan}, Hua Li. Artificial Intelligence in Healthcare: Transforming Diagnostics and Treatment. \textit{International Conference on HealthTech Innovations}, 2023.
+% \pubListEnd
+% }
+
+% -------------------- PROJECTS --------------------
+\sectionBlock{
+\section{Professional\\Experience}
+}{
+\profeshHeading
+{Research Analyst, Federal Reserve Bank of Philadelphia}{Philadelphia, PA, USA}{Jun. 2022--Present}
+\itemListStart
+\myItem{
+    Developed novel methodology to uniquely identify homeowners between properties using co-ownership record and mailing address history
+    }
+\myItem{
+    Leveraged concepts from network theory and linear algebra to convert methodology into optimized algorithms
+}
+\myItem{
+    Authored more than 5,000 lines of R and SQL code to apply algorithms to hundreds of gigabytes of property-level tax assessment and transaction data
+}
+\myItem{
+    Created new spatial data to measure how fragmentation of parcel use types affects long-term housing development
+}
+\myItem{
+    Automated chart production in Python for Monetary Policy briefings
+    }
+\myItem{
+    Modernized internal data collection and processing by scraping available data, removing reliance on 3rd party vendors
+    }
+\itemListEnd
+
+\profeshHeading
+{Volunteer Alumnus Teaching Assistant, Haverford College}{Haverford, PA, USA}{Jan. 2023--May 2023}
+\itemListStart
+\myItem{
+    Lead problem solving sessions for Advanced Microeconomics, the terminal microeconomics course
+}
+\myItem{
+    Adapted to student needs, teaching concepts from probability theory, calculus, and intermediate microeconomics
+}
+\itemListEnd
+
+\profeshHeading
+{Research Intern, Federal Reserve Bank of Philadelphia}{Philadelphia, PA, USA}{Jun. 2020--May 2022}
+\itemListStart
+\myItem{
+    Analyzed survey results from the Manufacturing Business Outlook Survey for the publication of monthly reports about the local business climate
+}
+\myItem{
+    Generated a dashboard of statistics and charts on COVID-19’s economic impacts
+}
+\itemListEnd
+
+
+
+\profeshHeading
+{Teaching Assistant, Haverford College}{Haverford, PA, USA}{Sep. 2021--Dec. 2021}
+\itemListStart
+\myItem{
+    Answered student questions about econometrics
+}
+\myItem{
+    Graded problem sets and provided constructive commentary
+}
+\itemListEnd
+
+}
+
+% -------------------- INTERNSHIPS --------------------
+% \sectionBlock{
+% \section{Internships}
+% }{
+% \internHeading
+%   {ABC Tech Ltd.}{Shanghai, China}{2024.01 - 2024.06}
+% \itemListStart
+%   \myItem{Develop engaging content for social media platforms.}
+%   \myItem{Prepare reports and presentations summarizing research findings.}
+% \itemListEnd
+% \internHeading
+%   {XYZ Tech Inc.}{Shanghai, China}{2023.07 - 2023.12}
+% \itemListStart
+%   \myItem{Develop engaging content for social media platforms.}
+%   \myItem{Prepare reports and presentations summarizing research findings.}
+% \itemListEnd
+% }
+
+% -------------------- AWARDS & HONORS --------------------
+\sectionBlock{
+\section{Awards\\and\\Honors}
+}{
+\awardListStart
+\justifying
+\item \emph{Michael M. Weinstein Prize in Economics}, Haverford College \hfill May 2022\\
+For having made the greatest overall contribution to departmental life. Awarded for contributions in class, with peers, and for starting the widely used Economics Question Center.
+\item \emph{Runner-Up, Holland Hunter Thesis Prize}, Haverford College \hfill May 2022\\
+For outstanding senior theses in economics. One of three selected as finalists for the award.
+\awardListEnd
+}
+
+% -------------------- SKILLS --------------------
+\sectionBlock{
+\section{Skills}
+}{
+\skillListStart
+\justifying
+\item \emph{Programming}: R, Python, SQL, Terminal (Bash,  PowerShell), Julia, Stata, Matlab.
+\item \emph{Technical}: git (GitHub/GitLab), Apache Hadoop, \TeX.
+\skillListEnd
+}
+
+% -------------------- OTHERS --------------------
+% \sectionBlock{
+% \section{Academic Services}
+% }{
+% \skillListStart
+% \justifying
+% \item \emph{Reviewers for}: \textit{Journal of Operations Research and Optimization},
+% \item \phantom{\emph{Reviewers for}:} \textit{International Conference on Optimization and Machine Learning},
+% \item \phantom{\emph{Reviewers for}:} \;...
+% \skillListEnd
+% }
+
+\end{document}
+
