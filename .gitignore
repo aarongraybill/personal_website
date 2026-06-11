@@ -13,3 +13,4 @@
 
 #firebase ignorables
 /.firebase/
+**/*.quarto_ipynb

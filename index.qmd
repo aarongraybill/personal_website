@@ -4,6 +4,11 @@ execute:
   message: false
   warning: false
 description-meta: "Aaron Graybill's landing page. A basic description of his professional experience at the Federal Reserve Bank of Philadelphia and his PhD in quantitative marketing at Stanford Graduate School of Business. It also discusses his research interest in digital markets and platform design."
+format:
+  html:
+    include-in-header:
+      text: |
+        <script src="assets/email-obfuscation.js" defer></script>
 ---
 :::: {layout="[[50,-2,50]]" layout-valign="center"}
 
@@ -12,7 +17,7 @@ description-meta: "Aaron Graybill's landing page. A basic description of his pro
 <a href="https://www.linkedin.com/in/aaron-graybill-194019180/" class="fa fa-linkedin"></a>
 <a href="https://github.com/aarongraybill" class="fa fa-github"></a>
 
-![](helpers/create_email_image/email_image.png){fig-alt="Aaron Graybill's Email"}
+<span id="email-conversion">my email is my full name separated with a period &#64;stanford.edu</span>
 :::
 
 ::: {intro-text}
