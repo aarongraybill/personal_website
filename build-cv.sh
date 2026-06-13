@@ -6,12 +6,7 @@ set -euo pipefail
 export PATH="$HOME/Library/TinyTeX/bin/universal-darwin:$PATH"
 
 # Make the PDF binary reproducible by pinning TeX's timestamps and trailer IDs.
-if [[ -z "${SOURCE_DATE_EPOCH:-}" ]]; then
-  SOURCE_DATE_EPOCH="$(git log -1 --format=%ct -- Graybill_CV 2>/dev/null || true)"
-  export SOURCE_DATE_EPOCH="${SOURCE_DATE_EPOCH:-0}"
-else
-  export SOURCE_DATE_EPOCH
-fi
+export SOURCE_DATE_EPOCH=0
 export FORCE_SOURCE_DATE=1
 export TZ=UTC
 
