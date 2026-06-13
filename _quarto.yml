@@ -10,6 +10,7 @@ website:
   site-url: "https://www.aarongraybill.com"
   description: "Information and content from Aaron Graybill"
   navbar:
+    pinned: true
     left:
     - href: index.qmd
       text: Home
@@ -17,8 +18,6 @@ website:
       text: CV
   google-analytics: "G-9E0WQEN2SV"
   favicon: favicon.ico
-  repo-url: https://github.com/aarongraybill/personal_website
-  repo-actions: source
 
 format:
   html:
