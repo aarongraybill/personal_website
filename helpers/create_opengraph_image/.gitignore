@@ -1,0 +1,7 @@
+.Rhistory
+.Rproj.user/
+.DS_Store
+
+__pycache__
+
+fonts/
