@@ -20,6 +20,7 @@ website:
       text: Home
     - href: Graybill_CV.pdf
       text: CV
+  search: false
   google-analytics: "G-9E0WQEN2SV"
   favicon: favicon.ico
   image: assets/opengraph.png
@@ -39,4 +40,3 @@ format:
       light: 
         - flatly
         - custom.scss
-    toc: true
