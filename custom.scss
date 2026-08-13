@@ -95,6 +95,14 @@ $link-color: $secondary;
   text-align: center;
 }
 
+// Keep the intrinsic 2:3 dimensions for layout reservation while allowing the
+// responsive image to shrink with its column without distortion.
+.portrait-image {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
 .email-copy-block {
   align-items: center;
   border: 1px solid $gray-300;

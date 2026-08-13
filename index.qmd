@@ -16,7 +16,19 @@ format:
 :::: {layout="[[50,-2,50]]" layout-valign="center"}
 
 ::: {.intro-card}
-![](assets/me.jpg){fig-alt="A Photo of Aaron Graybill"}
+<picture>
+  <source
+    srcset="assets/me-480.webp 480w, assets/me-800.webp 800w"
+    type="image/webp">
+  <img
+    class="portrait-image"
+    src="assets/me-800.jpg"
+    srcset="assets/me-480.jpg 480w, assets/me-800.jpg 800w"
+    sizes="(max-width: 768px) calc(100vw - 3rem), 365px"
+    width="800"
+    height="1200"
+    alt="Portrait of Aaron Graybill outdoors">
+</picture>
 <a href="https://www.linkedin.com/in/aaron-graybill-194019180/" class="fa fa-linkedin"></a>
 <a href="https://github.com/aarongraybill" class="fa fa-github"></a>
 

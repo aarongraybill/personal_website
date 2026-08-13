@@ -4,6 +4,10 @@ project:
     - bash build-cv.sh
   resources:
     - Graybill_CV.pdf
+    - assets/me-480.jpg
+    - assets/me-480.webp
+    - assets/me-800.jpg
+    - assets/me-800.webp
 
 website:
   title: "Aaron Graybill"
