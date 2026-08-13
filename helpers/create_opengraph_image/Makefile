@@ -26,5 +26,5 @@ $(REDWOOD_MASK): $(LEAF_MASK) make_redwood_mask.R | $(IMAGE_DIR)
 $(BATIK_CANVAS): $(REDWOOD_MASK) batik.py image_helpers.py | $(IMAGE_DIR)
 	$(PYTHON) batik.py
 
-$(OPENGRAPH): $(BATIK_CANVAS) compose_opengraph.py ../../assets/me.jpg
+$(OPENGRAPH): $(BATIK_CANVAS) compose_opengraph.py ../../assets/me-800.jpg
 	$(PYTHON) compose_opengraph.py
