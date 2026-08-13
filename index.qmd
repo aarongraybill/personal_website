@@ -29,8 +29,18 @@ format:
     height="1200"
     alt="Portrait of Aaron Graybill outdoors">
 </picture>
-<a href="https://www.linkedin.com/in/aaron-graybill-194019180/" class="fa fa-linkedin"></a>
-<a href="https://github.com/aarongraybill" class="fa fa-github"></a>
+<a
+  href="https://www.linkedin.com/in/aaron-graybill-194019180/"
+  class="social-icon social-linkedin"
+  aria-label="Aaron Graybill on LinkedIn">
+  <i class="bi bi-linkedin" aria-hidden="true"></i>
+</a>
+<a
+  href="https://github.com/aarongraybill"
+  class="social-icon social-github"
+  aria-label="Aaron Graybill on GitHub">
+  <i class="bi bi-github" aria-hidden="true"></i>
+</a>
 
 <span id="email-conversion">my email is my full name separated with a period &#64;stanford.edu</span>
 :::

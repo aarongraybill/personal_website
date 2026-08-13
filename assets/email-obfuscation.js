@@ -29,7 +29,7 @@
   copyButton.title = "Copy email address";
 
   const copyIcon = document.createElement("i");
-  copyIcon.className = "fa fa-clipboard email-copy-icon";
+  copyIcon.className = "bi bi-clipboard email-copy-icon";
   copyIcon.setAttribute("aria-hidden", "true");
 
   const copyStatus = document.createElement("span");

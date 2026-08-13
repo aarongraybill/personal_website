@@ -61,30 +61,38 @@ $link-color: $secondary;
 
 /* SOCIAL CARD STYLING */
 
-/* General Style for cards */
-.fa {
-  padding: 5px;
-  font-size: 50px;
-  width: 50px;
-  text-align: center;
+/* General style for social links */
+.social-icon {
+  align-items: center;
+  border-radius: 999px;
+  display: inline-flex;
+  font-size: 1.25rem;
+  height: 1.7rem;
+  justify-content: center;
   text-decoration: none;
-  border-radius: 50px;
+  width: 3.1rem;
 }
 
-.fa:hover {
+.social-icon:hover {
+  color: $white;
   opacity: 0.7;
+}
+
+.social-icon:focus-visible {
+  outline: 3px solid $primary;
+  outline-offset: 3px;
 }
 
 /* Set a specific color for each brand */
 
 /* Linkedin Styling */
-.fa-linkedin {
+.social-linkedin {
   background: #0a66c2;
   color: $white;
 }
 
 /* Github Styling */
-.fa-github {
+.social-github {
   background: #171515;
   color: $white;
 } 
@@ -146,7 +154,7 @@ $link-color: $secondary;
   color: $white;
 }
 
-.email-copy-icon.fa {
+.email-copy-icon {
   background: transparent;
   border-radius: 0;
   color: inherit;
