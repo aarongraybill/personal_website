@@ -12,7 +12,7 @@ INPUT_PATH = IMAGE_DIR / "batik_canvas.png"
 OUTPUT_PATH = IMAGE_DIR / "opengraph.png"
 ASSETS_DIR = HERE / "../../assets"
 SITE_ACCESS_PATH = ASSETS_DIR / "opengraph.png"
-PORTRAIT_PATH = ASSETS_DIR / "me.jpg"
+PORTRAIT_PATH = ASSETS_DIR / "me-800.jpg"
 
 WIDTH, HEIGHT = 1200, 630
 NAVY = (0x00, 0x0D, 0x4D)
