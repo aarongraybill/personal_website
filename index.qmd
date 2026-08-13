@@ -45,16 +45,24 @@ format:
 :::
 
 ::: {intro-text}
-Hi, I'm Aaron! I'm a second year PhD student at Stanford Graduate School of Business studying quantitative marketing. Before Stanford, I worked at the Federal Reserve
-Bank of Philadelphia with [Kyle Mangum](https://www.philadelphiafed.org/our-people/kyle-mangum) on applied microeconomics. I completed my undergrad degree at Haverford College.
+Hi, I'm Aaron! I'm a second year PhD student at Stanford Graduate School of
+Business studying quantitative marketing.
 
-My research interests lie at the intersection of social science and technology. I hope to contribute to research on digital privacy legislation, social media, and the creator economy.
+Before Stanford, I worked at the Federal Reserve
+Bank of Philadelphia with 
+[Kyle Mangum](https://www.philadelphiafed.org/our-people/kyle-mangum) on applied
+microeconomics. I completed my undergrad degree at Haverford College.
+
+My research interests lie at the intersection of social science and technology. 
+I hope to contribute to research on digital privacy legislation, social media, 
+and the creator economy.
 
 Here is a link to [my CV](Graybill_CV.pdf).
 
 If you're curious about my time as a Fed RA or the PhD application process, feel
-free to reach out. I'm especially glad to connect with people with different educational
-or demographic backgrounds to my own. I'm always happy to chat and help however I can.
+free to reach out. I'm especially glad to connect with people with different
+educational or demographic backgrounds to my own. I'm always happy to chat and 
+help however I can.
 
 Outside of research, I have a rotating cast of hobbies including film photography
 and development, recreational mathematics, various coding projects, and guitar.
