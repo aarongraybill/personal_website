@@ -38,7 +38,7 @@ $dark:          $gray-600 !default;
 /* DEAL WITH FONTS */
 
 $h2-font-size:            1.6rem !default;
-$web-font-path: "https://fonts.googleapis.com/css?family=Alice|Atkinson+Hyperlegible" !default;
+$web-font-path: "https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap";
 @if $web-font-path {
   @import url($web-font-path);
 };
