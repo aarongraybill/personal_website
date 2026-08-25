@@ -44,7 +44,7 @@ format:
 <span id="email-conversion">my email is my full name separated with a period &#64;stanford.edu</span>
 :::
 
-::: {intro-text}
+::: {.intro-text}
 Hi, I'm Aaron! I'm a second year PhD student at Stanford Graduate School of
 Business studying quantitative marketing.
 
