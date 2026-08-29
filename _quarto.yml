@@ -7,6 +7,7 @@ project:
   resources:
     - Graybill_CV.pdf
     - assets/lastfm-widget.js
+    - assets/uncook.js
     - assets/me-480.jpg
     - assets/me-480.webp
     - assets/me-800.jpg
@@ -24,7 +25,6 @@ website:
     - href: Graybill_CV.pdf
       text: CV
   search: false
-  google-analytics: "G-9E0WQEN2SV"
   favicon: favicon.ico
   image: assets/opengraph.png
   image-alt: "Aaron Graybill with an introduction over a blue and green batik-inspired redwood design."
