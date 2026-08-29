@@ -12,6 +12,7 @@ project:
     - assets/me-480.webp
     - assets/me-800.jpg
     - assets/me-800.webp
+    - assets/AtkinsonHyperlegibleNextVF-Variable.woff2
 
 website:
   title: "Aaron Graybill"

@@ -38,13 +38,18 @@ $dark:          $gray-600 !default;
 /* DEAL WITH FONTS */
 
 $h2-font-size:            1.6rem !default;
-$web-font-path: "https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap";
-@if $web-font-path {
-  @import url($web-font-path);
-};
-$font-family-sans-serif:  Atkinson Hyperlegible;
-$font-family: Atkinson Hyperlegible;
-$headings-font-family: Atkinson Hyperlegible;
+@font-face {
+  font-family: 'Atkinson Hyperlegible Next';
+  src: url('assets/AtkinsonHyperlegibleNextVF-Variable.woff2') format('woff2 supports variations'),
+       url('assets/AtkinsonHyperlegibleNextVF-Variable.woff2') format('woff2-variations');
+  font-weight: 100 900; /* Defines the supported weight range */
+  font-style: normal;
+  font-display: swap;
+}
+
+$font-family-sans-serif:  Atkinson Hyperlegible Next;
+$font-family: Atkinson Hyperlegible Next;
+$headings-font-family: Atkinson Hyperlegible Next;
 
 $body-color: $gray-900;
 $link-color: $secondary;
