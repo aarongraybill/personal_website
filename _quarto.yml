@@ -1,9 +1,12 @@
 project:
   type: website
+  render:
+    - "*.qmd"
   pre-render:
     - bash build-cv.sh
   resources:
     - Graybill_CV.pdf
+    - assets/lastfm-widget.js
     - assets/me-480.jpg
     - assets/me-480.webp
     - assets/me-800.jpg
