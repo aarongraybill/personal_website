@@ -106,6 +106,20 @@ main button:focus-visible {
   text-align: center;
 }
 
+// Allow the text column and its listening card to shrink within the mobile
+// content gutter instead of expanding to the card's preferred width.
+.intro-text {
+  min-width: 0;
+}
+
+// Quarto stacks the intro columns below 768px. Give the text column a definite
+// width so the listening card cannot expand it beyond the mobile content area.
+@media (max-width: 767.98px) {
+  .intro-text {
+    width: 100%;
+  }
+}
+
 // Keep the intrinsic 2:3 dimensions for layout reservation while allowing the
 // responsive image to shrink with its column without distortion.
 .portrait-image {
@@ -177,6 +191,104 @@ main button:focus-visible {
   position: absolute;
   white-space: nowrap;
   width: 1px;
+}
+
+/* Recently played card */
+
+.listening-card {
+  align-items: center;
+  background: rgba($off_white, 0.72);
+  border: 8px solid $primary;
+  border-radius: 8px;
+  box-sizing: border-box;
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: 4rem minmax(0, 1fr);
+  line-height: 1.2;
+  margin: 1rem 0 0;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  padding: 0.55rem;
+  text-align: left;
+  width: min(100%, 22rem);
+}
+
+.listening-card[hidden] {
+  display: none;
+}
+
+.listening-art-wrap {
+  align-items: center;
+  background: $gray-200;
+  border-radius: 5px;
+  display: flex;
+  height: 4rem;
+  justify-content: center;
+  min-width: 0;
+  overflow: hidden;
+  width: 4rem;
+}
+
+.listening-art {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.listening-art-wrap .bi {
+  color: $gray-700;
+  font-size: 1.5rem;
+}
+
+.listening-copy {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  width: 100%;
+}
+
+.listening-label {
+  color: $gray-700;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.055em;
+  margin-bottom: 0.2rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.listening-track {
+  color: $primary;
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 700;
+  max-width: 100%;
+  overflow: hidden;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.listening-track[href]:hover {
+  color: $indigo;
+  text-decoration: underline;
+}
+
+.listening-artist {
+  color: $gray-700;
+  display: block;
+  font-size: 0.86rem;
+  margin-top: 0.12rem;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 /* COLUMN CUSTOMIZATION */

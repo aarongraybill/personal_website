@@ -11,8 +11,26 @@ format:
     include-in-header:
       text: |
         <script src="assets/email-obfuscation.js" defer></script>
+    include-after-body:
+      text: |
+        <script>
+          window.addEventListener("load", () => {
+            const loadWidget = () => {
+              const script = document.createElement("script");
+              script.src = "assets/lastfm-widget.js";
+              script.async = true;
+              document.body.append(script);
+            };
+
+            if ("requestIdleCallback" in window) {
+              window.requestIdleCallback(loadWidget, { timeout: 1500 });
+            } else {
+              window.setTimeout(loadWidget, 0);
+            }
+          }, { once: true });
+        </script>
 ---
-:::: {layout="[[50,-2,50]]" layout-valign="center"}
+:::: {layout="[[50,-2,50]]" layout-valign="top"}
 
 ::: {.intro-card}
 <picture>
@@ -66,6 +84,38 @@ help however I can.
 
 Outside of research, I have a rotating cast of hobbies including film photography
 and development, recreational mathematics, various coding projects, and guitar.
+
+
+```{=html}
+<div id="lastfm-section" hidden>
+<p>And hey, while you're here, here's something I've been listening to:</p>
+<div
+  id="lastfm-widget"
+  class="listening-card"
+  role="complementary"
+  aria-live="polite"
+  aria-label="Aaron's recently played music">
+  <span class="listening-art-wrap" aria-hidden="true">
+    <img
+      id="lastfm-art"
+      class="listening-art"
+      width="64"
+      height="64"
+      alt=""
+      loading="lazy"
+      decoding="async"
+      fetchpriority="low"
+      hidden>
+    <i id="lastfm-art-placeholder" class="bi bi-music-note-beamed" hidden></i>
+  </span>
+  <span class="listening-copy">
+    <span id="lastfm-status" class="listening-label">Recently listened</span>
+    <a id="lastfm-track" class="listening-track"></a>
+    <span id="lastfm-artist" class="listening-artist"></span>
+  </span>
+</div>
+</div>
+```
 :::
 
 ::::
