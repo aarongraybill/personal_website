@@ -42,5 +42,5 @@ format:
     highlight-style: a11y
     theme:
       light: 
-        - flatly
+        - flatly-modified.scss
         - custom.scss
