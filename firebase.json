@@ -18,6 +18,14 @@
           "region": "us-west1",
           "pinTag": true
         }
+      },
+      {
+        "source": "/api/album-art",
+        "function": {
+          "functionId": "albumArt",
+          "region": "us-west1",
+          "pinTag": true
+        }
       }
     ]
   }

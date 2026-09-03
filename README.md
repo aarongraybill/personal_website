@@ -1,7 +1,8 @@
 # Personal website
 
 This is a Quarto website hosted with Firebase Hosting. The recently played
-music widget is served by the pinned `whatsPlaying` Firebase function.
+music widget is served by the pinned `whatsPlaying` and `albumArt` Firebase
+functions.
 
 ## One-time Firebase setup
 
@@ -26,10 +27,10 @@ make preview
 This installs the function dependencies, renders the website, and starts the
 Firebase Hosting and Functions emulators. Quarto continues watching the source
 files and re-renders them when they change, while the Hosting emulator serves
-the contents of `_site` and routes `/api/whats-playing` to the local
-`whatsPlaying` function. Open the Hosting URL printed in the terminal (normally
-`http://127.0.0.1:5000`) and refresh it after changes. Press `Ctrl+C` to stop
-both the Quarto watcher and Firebase emulators.
+the contents of `_site` and routes `/api/whats-playing` and `/api/album-art` to
+the local widget functions. Open the Hosting URL printed in the terminal
+(normally `http://127.0.0.1:5000`) and refresh it after changes. Press `Ctrl+C`
+to stop both the Quarto watcher and Firebase emulators.
 
 ## Render and deploy
 
@@ -50,8 +51,8 @@ npx firebase-tools@latest deploy --only hosting
 
 This performs a clean installation of the function dependencies, runs the
 function tests, renders the Quarto website into `_site`, and deploys Firebase
-Hosting. Because the `whatsPlaying` function is pinned to the Hosting release,
-Firebase also deploys that function.
+Hosting. Because both widget functions are pinned to the Hosting release,
+Firebase also deploys those functions.
 
 For initial authentication:
 

@@ -10,8 +10,16 @@ import { rootCertificates } from "node:tls";
 const UPSTREAM_URL = "https://www.ballix.net/whatsplaying/?user=aarongraybill";
 const SAFE_IMAGE_HOST = /^lastfm-img\d*\.(?:freetls\.fastly\.net|akamaized\.net)$/i;
 const SAFE_TRACK_HOST = /^(?:www\.)?last\.fm$/i;
+const SAFE_IMAGE_PATH = /^\/i\/u\//;
+const SAFE_IMAGE_TYPES = new Set([
+  "image/gif",
+  "image/jpeg",
+  "image/png",
+  "image/webp",
+]);
 const FILTERED_TITLE = "Title not displayed";
 const MAX_RESPONSE_BYTES = 64 * 1024;
+const MAX_IMAGE_BYTES = 512 * 1024;
 const upstreamIntermediate = readFileSync(
   new URL("./certs/sectigo-r36.pem", import.meta.url),
   "utf8",
@@ -59,13 +67,46 @@ function pickImage(images) {
   }
 
   for (const size of ["large", "extralarge", "medium", "small"]) {
-    const image = safeUrl(images[size], SAFE_IMAGE_HOST);
+    const image = safeImageSource(images[size]);
     if (image) {
       return image;
     }
   }
 
   return null;
+}
+
+function albumArtProxyUrl(image) {
+  return image
+    ? `/api/album-art?src=${encodeURIComponent(image)}`
+    : null;
+}
+
+function safeImageSource(value) {
+  const image = safeUrl(value, SAFE_IMAGE_HOST);
+
+  if (!image) {
+    return null;
+  }
+
+  const url = new URL(image);
+  return !url.username
+    && !url.password
+    && (!url.port || url.port === "443")
+    && SAFE_IMAGE_PATH.test(url.pathname)
+    && !url.search
+    && !url.hash
+    ? url.toString()
+    : null;
+}
+
+function imageContentType(value) {
+  if (typeof value !== "string") {
+    return null;
+  }
+
+  const contentType = value.split(";", 1)[0].trim().toLowerCase();
+  return SAFE_IMAGE_TYPES.has(contentType) ? contentType : null;
 }
 
 function isNowPlaying(value) {
@@ -124,6 +165,73 @@ function loadUpstreamJson() {
   });
 }
 
+function loadImageBytes(url) {
+  return new Promise((resolve, reject) => {
+    const request = httpsRequest(
+      url,
+      {
+        headers: {
+          Accept: "image/webp,image/png,image/jpeg,image/gif,image/*;q=0.8",
+          "User-Agent": "aarongraybill.com album-art proxy",
+        },
+        method: "GET",
+        timeout: 3500,
+      },
+      (upstreamResponse) => {
+        if (upstreamResponse.statusCode !== 200) {
+          upstreamResponse.resume();
+          reject(new Error(`Album-art response ${upstreamResponse.statusCode}`));
+          return;
+        }
+
+        const contentType = imageContentType(upstreamResponse.headers["content-type"]);
+        if (!contentType) {
+          upstreamResponse.resume();
+          reject(new Error("Album-art response was not a supported image"));
+          return;
+        }
+
+        const declaredLength = Number(upstreamResponse.headers["content-length"]);
+        if (Number.isFinite(declaredLength) && declaredLength > MAX_IMAGE_BYTES) {
+          upstreamResponse.resume();
+          reject(new Error("Album-art response was too large"));
+          return;
+        }
+
+        const chunks = [];
+        let receivedBytes = 0;
+        let responseWasRejected = false;
+
+        upstreamResponse.on("data", (chunk) => {
+          receivedBytes += chunk.length;
+
+          if (receivedBytes > MAX_IMAGE_BYTES) {
+            responseWasRejected = true;
+            request.destroy(new Error("Album-art response was too large"));
+            return;
+          }
+
+          chunks.push(chunk);
+        });
+        upstreamResponse.on("end", () => {
+          if (!responseWasRejected) {
+            resolve({
+              body: Buffer.concat(chunks),
+              contentType,
+            });
+          }
+        });
+      },
+    );
+
+    request.on("timeout", () => {
+      request.destroy(new Error("Album-art request timed out"));
+    });
+    request.on("error", reject);
+    request.end();
+  });
+}
+
 export function createWhatsPlayingHandler({
   loadUpstream = loadUpstreamJson,
   matcher = profanityMatcher,
@@ -150,7 +258,7 @@ export function createWhatsPlayingHandler({
         title: titleWasFiltered ? FILTERED_TITLE : rawTitle,
         titleWasFiltered,
         artist: cleanText(upstream.artist, 120),
-        image: pickImage(upstream.image),
+        image: albumArtProxyUrl(pickImage(upstream.image)),
         url: titleWasFiltered ? null : safeUrl(upstream.url, SAFE_TRACK_HOST),
         nowPlaying: isNowPlaying(upstream.nowplaying),
       };
@@ -171,3 +279,46 @@ export function createWhatsPlayingHandler({
 }
 
 export const whatsPlayingHandler = createWhatsPlayingHandler();
+
+export function createAlbumArtHandler({
+  loadImage = loadImageBytes,
+  logger = console,
+} = {}) {
+  return async (request, response) => {
+    if (request.method !== "GET") {
+      response.set("Allow", "GET");
+      setJsonHeaders(response, "no-store");
+      response.status(405).json({ error: "Method not allowed" });
+      return;
+    }
+
+    const source = typeof request.query?.src === "string"
+      ? safeImageSource(request.query.src)
+      : null;
+
+    if (!source) {
+      setJsonHeaders(response, "no-store");
+      response.status(400).json({ error: "Invalid album-art source" });
+      return;
+    }
+
+    try {
+      const image = await loadImage(source);
+      response.set(
+        "Cache-Control",
+        "public, max-age=86400, s-maxage=31536000, stale-while-revalidate=86400, immutable",
+      );
+      response.set("Content-Length", String(image.body.length));
+      response.set("Content-Type", image.contentType);
+      response.set("Cross-Origin-Resource-Policy", "same-origin");
+      response.set("X-Content-Type-Options", "nosniff");
+      response.status(200).send(image.body);
+    } catch (error) {
+      logger.error("Unable to proxy album art", error);
+      setJsonHeaders(response, "no-store");
+      response.status(502).json({ error: "Album art is temporarily unavailable" });
+    }
+  };
+}
+
+export const albumArtHandler = createAlbumArtHandler();

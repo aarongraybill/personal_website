@@ -1,4 +1,20 @@
 (() => {
+  function albumArtUrl(value) {
+    if (typeof value !== "string") {
+      return null;
+    }
+
+    try {
+      const url = new URL(value, window.location.origin);
+      return url.origin === window.location.origin
+        && url.pathname === "/api/album-art"
+        ? url.toString()
+        : null;
+    } catch {
+      return null;
+    }
+  }
+
   const section = document.getElementById("lastfm-section");
   const widget = document.getElementById("lastfm-widget");
 
@@ -41,8 +57,9 @@
         track.setAttribute("aria-label", `${song.title} by ${song.artist || "unknown artist"} on Last.fm`);
       }
 
-      if (typeof song.image === "string" && song.image) {
-        art.src = song.image;
+      const image = albumArtUrl(song.image);
+      if (image) {
+        art.src = image;
         art.alt = `Album art for ${song.title}${song.artist ? ` by ${song.artist}` : ""}`;
         art.hidden = false;
       } else {
