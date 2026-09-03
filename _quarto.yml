@@ -6,6 +6,7 @@ project:
     - bash build-cv.sh
   resources:
     - Graybill_CV.pdf
+    - assets/email-obfuscation.js
     - assets/lastfm-widget.js
     - assets/uncook.js
     - assets/me-480.jpg
@@ -39,6 +40,10 @@ website:
 
 format:
   html:
+    include-in-header:
+      text: |
+        <script src="/assets/uncook.js" defer></script>
+        <script src="/assets/email-obfuscation.js" defer></script>
     highlight-style: a11y
     theme:
       light: 

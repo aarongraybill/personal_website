@@ -8,10 +8,6 @@ image: assets/opengraph.png
 image-alt: "Aaron Graybill with an introduction over a blue and green batik-inspired redwood design."
 format:
   html:
-    include-in-header:
-      text: |
-        <script src="assets/uncook.js" defer></script>
-        <script src="assets/email-obfuscation.js" defer></script>
     include-after-body:
       text: |
         <script>
