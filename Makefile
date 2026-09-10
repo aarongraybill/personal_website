@@ -1,4 +1,4 @@
-.PHONY: preview dependencies test render deploy login
+.PHONY: preview dependencies test fonts verify-fonts font-assets render deploy login
 
 PREVIEW_URL := http://127.0.0.1:5000
 
@@ -14,6 +14,15 @@ dependencies:
 
 test: dependencies
 	npm --prefix functions test
+
+fonts:
+	bash scripts/vendor-fonts.sh
+
+verify-fonts:
+	bash scripts/verify-fonts.sh
+
+font-assets:
+	bash scripts/build-font-assets.sh
 
 render:
 	quarto render

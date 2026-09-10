@@ -3,6 +3,7 @@ project:
   render:
     - "*.qmd"
   pre-render:
+    - bash scripts/build-font-assets.sh
     - bash build-cv.sh
   resources:
     - Graybill_CV.pdf
@@ -13,7 +14,9 @@ project:
     - assets/me-480.webp
     - assets/me-800.jpg
     - assets/me-800.webp
-    - assets/AtkinsonHyperlegibleNextVF-Variable.woff2
+    - assets/AtkinsonHyperlegibleNext-Variable.woff2
+    - assets/AtkinsonHyperlegibleNext-VariableItalic.woff2
+    - assets/AtkinsonHyperlegibleNext-OFL.txt
 
 website:
   title: "Aaron Graybill"

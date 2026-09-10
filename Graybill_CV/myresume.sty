@@ -20,38 +20,28 @@
 \usepackage{tabularx}
 \usepackage{ragged2e}
 
-% Font style
+% Font style. All files live in the repository's canonical fonts directory.
 \usepackage{fontspec}
-\setmainfont{SabonLTStd}[
-    Path=./Fonts/Sabon/,
+\newfontfamily\AlegreyaSansSC{AlegreyaSansSC}[
+    Path={../fonts/Alegreya Sans SC/},
     Extension = .ttf,
+    UprightFont=*-Light
+    ]
+\newfontfamily\Atkinson{AtkinsonHyperlegibleNext}[
+    Path={../fonts/Atkinson Hyperlegible Next/otf/},
+    Extension = .otf,
     UprightFont=*-Regular,
     BoldFont=*-Bold,
     ItalicFont=*-Italic,
     BoldItalicFont=*-BoldItalic
     ]
-\newfontfamily\Calluna{Calluna}[
-    Path=./Fonts/Calluna/,
+\setmonofont{AtkinsonHyperlegibleMono}[
+    Path={../fonts/Atkinson Hyperlegible Mono/otf/},
     Extension = .otf,
     UprightFont=*-Regular
     ]
-\newfontfamily\CronosLt{CronosProLT}[
-    Path=./Fonts/Cronos/,
-    Extension = .ttf,
-    UprightFont=*-Regular
-    ]
-\newfontfamily\Atkinson{AtkinsonHyperlegible}[
-    Path=./Fonts/AtkinsonHyperlegible/,
-    Extension = .ttf,
-    UprightFont=*-Regular
-    ]
-\newfontfamily\Cormorant{CormorantGaramond}[
-    Path=./Fonts/CormorantGaramond/static/,
-    Extension = .ttf,
-    UprightFont=*-Regular
-    ]
 \setmainfont{CormorantGaramond}[
-    Path=./Fonts/CormorantGaramond/static/,
+    Path={../fonts/Cormorant Garamond/ttf/},
     Extension = .ttf,
     UprightFont=*-Medium,
     BoldFont=*-Bold,
@@ -80,7 +70,7 @@
 % Section title
 \titleformat{\section}{
   \setstretch{1.0}
-  \CronosLt\scshape\raggedright
+  \AlegreyaSansSC\raggedright
   \fontsize{14.5pt}{14.5pt}\selectfont 
 }{}{0em}{}
 

@@ -39,17 +39,24 @@ $dark:          $gray-600 !default;
 
 $h2-font-size:            1.6rem !default;
 @font-face {
-  font-family: 'Atkinson Hyperlegible Next';
-  src: url('assets/AtkinsonHyperlegibleNextVF-Variable.woff2') format('woff2 supports variations'),
-       url('assets/AtkinsonHyperlegibleNextVF-Variable.woff2') format('woff2-variations');
-  font-weight: 100 900; /* Defines the supported weight range */
+  font-family: "Atkinson Hyperlegible Next";
+  src: url("assets/AtkinsonHyperlegibleNext-Variable.woff2") format("woff2");
+  font-weight: 200 800;
   font-style: normal;
   font-display: swap;
 }
 
-$font-family-sans-serif:  Atkinson Hyperlegible Next;
-$font-family: Atkinson Hyperlegible Next;
-$headings-font-family: Atkinson Hyperlegible Next;
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
+  src: url("assets/AtkinsonHyperlegibleNext-VariableItalic.woff2") format("woff2");
+  font-weight: 200 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+$font-family-sans-serif: "Atkinson Hyperlegible Next", sans-serif;
+$font-family: $font-family-sans-serif;
+$headings-font-family: $font-family-sans-serif;
 
 $body-color: $gray-900;
 $link-color: $secondary;

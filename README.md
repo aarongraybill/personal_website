@@ -32,6 +32,31 @@ the local widget functions. Open the Hosting URL printed in the terminal
 (normally `http://127.0.0.1:5000`) and refresh it after changes. Press `Ctrl+C`
 to stop both the Quarto watcher and Firebase emulators.
 
+## Fonts
+
+The canonical font files live in `fonts/`; the CV reads them directly from
+there. Every font is hash-pinned, and the open-source families are also pinned
+to immutable upstream Git commits. To re-download the open fonts and verify all
+CV font inputs, run:
+
+```bash
+make fonts
+```
+
+The CV's Alegreya Sans SC section-heading font is downloaded from an immutable
+Google Fonts Git commit and verified by hash along with the other open fonts.
+
+The website's Atkinson Hyperlegible Next files under `assets/` are generated
+from the canonical variable webfonts:
+
+```bash
+make font-assets
+```
+
+This verification-and-copy step runs automatically before every Quarto render.
+It does not copy Alegreya Sans SC or Atkinson Hyperlegible Mono because those
+fonts are used only in the PDF CV.
+
 ## Render and deploy
 
 Run the complete deployment pipeline from the project root:
