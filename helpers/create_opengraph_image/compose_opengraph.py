@@ -1,16 +1,16 @@
 """Add clean text and portrait overlays to the rendered batik background."""
 
 from pathlib import Path
-from urllib.request import Request, urlopen
 
 from PIL import Image, ImageDraw, ImageFont, ImageOps
 
 
 HERE = Path(__file__).resolve().parent
+PROJECT_ROOT = HERE.parent.parent
 IMAGE_DIR = HERE / "images"
 INPUT_PATH = IMAGE_DIR / "batik_canvas.png"
 OUTPUT_PATH = IMAGE_DIR / "opengraph.png"
-ASSETS_DIR = HERE / "../../assets"
+ASSETS_DIR = PROJECT_ROOT / "assets"
 SITE_ACCESS_PATH = ASSETS_DIR / "opengraph.png"
 PORTRAIT_PATH = ASSETS_DIR / "me-800.jpg"
 
@@ -29,42 +29,11 @@ HEADLINE = "Hi, I'm Aaron!"
 BODY = "I'm a PhD Student\nat Stanford GSB."
 FOOTER = "This is my website."
 
-HEADLINE_FONT = HERE / "fonts/AtkinsonHyperlegible-Bold.otf"
-BODY_FONT = HERE / "fonts/AtkinsonHyperlegible-Regular.otf"
-FONT_URLS = {
-    HEADLINE_FONT: (
-        "https://raw.githubusercontent.com/googlefonts/atkinson-hyperlegible/"
-        "main/fonts/otf/AtkinsonHyperlegible-Bold.otf"
-    ),
-    BODY_FONT: (
-        "https://raw.githubusercontent.com/googlefonts/atkinson-hyperlegible/"
-        "main/fonts/otf/AtkinsonHyperlegible-Regular.otf"
-    ),
-}
+FONT_DIR = PROJECT_ROOT / "fonts" / "Atkinson Hyperlegible Next" / "otf"
+HEADLINE_FONT = FONT_DIR / "AtkinsonHyperlegibleNext-Bold.otf"
+BODY_FONT = FONT_DIR / "AtkinsonHyperlegibleNext-Regular.otf"
 HEADLINE_SIZE = 66
 BODY_SIZE = 50
-
-
-def ensure_fonts() -> None:
-    """Download missing Atkinson Hyperlegible faces from the official repository."""
-    HEADLINE_FONT.parent.mkdir(parents=True, exist_ok=True)
-
-    for font_path, url in FONT_URLS.items():
-        if font_path.is_file():
-            continue
-
-        request = Request(url, headers={"User-Agent": "create-opengraph-image"})
-        with urlopen(request) as response:
-            font_data = response.read()
-
-        temporary_path = font_path.with_suffix(f"{font_path.suffix}.tmp")
-        temporary_path.write_bytes(font_data)
-        try:
-            ImageFont.truetype(temporary_path, size=12)
-            temporary_path.replace(font_path)
-        except Exception:
-            temporary_path.unlink(missing_ok=True)
-            raise
 
 
 def portrait_layer() -> tuple[Image.Image, Image.Image]:
@@ -89,8 +58,6 @@ def portrait_layer() -> tuple[Image.Image, Image.Image]:
 
 
 def render() -> Image.Image:
-    ensure_fonts()
-
     with Image.open(INPUT_PATH) as source:
         if source.size != (WIDTH, HEIGHT):
             raise ValueError(f"{INPUT_PATH.name} must be {WIDTH} x {HEIGHT}")
@@ -117,15 +84,16 @@ def render() -> Image.Image:
     headline_font = ImageFont.truetype(HEADLINE_FONT, HEADLINE_SIZE)
     body_font = ImageFont.truetype(BODY_FONT, BODY_SIZE)
 
-    draw.text((63, 126), HEADLINE, font=headline_font, fill=WHITE)
+    # Preserve the original baselines despite the Next faces' taller metrics.
+    draw.text((64, 124), HEADLINE, font=headline_font, fill=WHITE)
     draw.multiline_text(
-        (63, 274),
+        (64, 272),
         BODY,
         font=body_font,
         fill=WHITE,
-        spacing=7,
+        spacing=5,
     )
-    draw.text((63, 467), FOOTER, font=body_font, fill=WHITE)
+    draw.text((63, 465), FOOTER, font=body_font, fill=WHITE)
 
     portrait, portrait_mask = portrait_layer()
     canvas.paste(portrait, PORTRAIT_INNER_BOX[:2], portrait_mask)
