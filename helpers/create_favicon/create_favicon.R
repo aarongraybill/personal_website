@@ -2,35 +2,20 @@ if (utils::packageVersion("systemfonts") < "1.2.0") {
   stop("create_favicon.R requires systemfonts 1.2.0 or newer")
 }
 
-font_dir <- tempfile("atkinson-hyperlegible-")
-dir.create(font_dir)
-on.exit(unlink(font_dir, recursive = TRUE), add = TRUE)
-
-# Download the actual font file. It is used only while this script is running;
-# the generated SVG contains paths and has no runtime font dependency.
-systemfonts::get_from_google_fonts(
-  "Atkinson Hyperlegible",
-  dir = font_dir,
-  woff2 = FALSE
+font_path <- file.path(
+  "..",
+  "..",
+  "fonts",
+  "Atkinson Hyperlegible Next",
+  "otf",
+  "AtkinsonHyperlegibleNext-Regular.otf"
 )
 
-font_files <- list.files(
-  font_dir,
-  pattern = "\\.(otf|ttf)$",
-  full.names = TRUE,
-  recursive = TRUE,
-  ignore.case = TRUE
-)
-regular_font <- font_files[
-  grepl("regular", basename(font_files), ignore.case = TRUE) &
-    !grepl("(bold|italic)", basename(font_files), ignore.case = TRUE)
-]
-
-if (length(regular_font) != 1L) {
-  stop("Could not identify the downloaded Atkinson Hyperlegible Regular font")
+if (!file.exists(font_path)) {
+  stop("Could not find the canonical Atkinson Hyperlegible Next Regular font")
 }
 
-font_path <- regular_font[[1L]]
+font_path <- normalizePath(font_path)
 font_size <- 126
 
 glyph_path <- function(character, x, baseline, anchor = c("start", "end")) {
