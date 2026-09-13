@@ -66,7 +66,7 @@ function pickImage(images) {
     return null;
   }
 
-  for (const size of ["large", "extralarge", "medium", "small"]) {
+  for (const size of ["extralarge", "large", "medium", "small"]) {
     const image = safeImageSource(images[size]);
     if (image) {
       return image;
