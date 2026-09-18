@@ -7,6 +7,7 @@ project:
     - bash build-cv.sh
   resources:
     - Graybill_CV.pdf
+    - plausible_exclude.html
     - assets/email-obfuscation.js
     - assets/lastfm-widget.js
     - assets/uncook.js
@@ -40,6 +41,8 @@ website:
     card-style: summary_large_image
     image-width: 1200
     image-height: 630
+  plausible-analytics:
+    path: _plausible_snippet.html
 
 format:
   html:
