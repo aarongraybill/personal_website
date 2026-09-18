@@ -1,3 +1,5 @@
+quarto-required: ">= 1.9.0"
+
 project:
   type: website
   render:
