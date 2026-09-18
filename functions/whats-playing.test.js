@@ -47,7 +47,9 @@ test("returns a safe, cacheable song payload", async () => {
 
   assert.equal(response.statusCode, 200);
   assert.equal(response.body.title, "serena joy");
+  assert.equal(response.body.titleWasFiltered, false);
   assert.equal(response.body.artist, "Olivia Rodrigo");
+  assert.equal(response.body.artistWasFiltered, false);
   assert.equal(response.body.nowPlaying, true);
   assert.match(response.body.url, /^https:\/\/www\.last\.fm\//);
   const image = new URL(response.body.image, "https://www.aarongraybill.com");
@@ -77,6 +79,28 @@ test("withholds an obscene song title", async () => {
   assert.equal(response.statusCode, 200);
   assert.equal(response.body.title, "Title not displayed");
   assert.equal(response.body.titleWasFiltered, true);
+  assert.equal(response.body.url, null);
+});
+
+test("withholds an obscene artist name", async () => {
+  const response = createResponse();
+  const handler = createWhatsPlayingHandler({
+    loadUpstream: async () => ({
+      artist: "Fuuuuuuuck Ensemble",
+      image: {},
+      name: "A safe title",
+      nowplaying: null,
+      url: "https://www.last.fm/music/Fuuuuuuuck+Ensemble/_/A+safe+title",
+    }),
+  });
+
+  await handler({ method: "GET" }, response);
+
+  assert.equal(response.statusCode, 200);
+  assert.equal(response.body.title, "A safe title");
+  assert.equal(response.body.titleWasFiltered, false);
+  assert.equal(response.body.artist, "Artist not displayed");
+  assert.equal(response.body.artistWasFiltered, true);
   assert.equal(response.body.url, null);
 });
 

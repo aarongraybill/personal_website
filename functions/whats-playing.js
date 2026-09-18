@@ -18,6 +18,7 @@ const SAFE_IMAGE_TYPES = new Set([
   "image/webp",
 ]);
 const FILTERED_TITLE = "Title not displayed";
+const FILTERED_ARTIST = "Artist not displayed";
 const MAX_RESPONSE_BYTES = 64 * 1024;
 const MAX_IMAGE_BYTES = 512 * 1024;
 const upstreamIntermediate = readFileSync(
@@ -248,18 +249,23 @@ export function createWhatsPlayingHandler({
     try {
       const upstream = await loadUpstream();
       const rawTitle = cleanText(upstream.name, 160);
+      const rawArtist = cleanText(upstream.artist, 120);
 
       if (!rawTitle) {
         throw new Error("Upstream response did not include a song title");
       }
 
       const titleWasFiltered = matcher.hasMatch(rawTitle);
+      const artistWasFiltered = Boolean(rawArtist) && matcher.hasMatch(rawArtist);
       const song = {
         title: titleWasFiltered ? FILTERED_TITLE : rawTitle,
         titleWasFiltered,
-        artist: cleanText(upstream.artist, 120),
+        artist: artistWasFiltered ? FILTERED_ARTIST : rawArtist,
+        artistWasFiltered,
         image: albumArtProxyUrl(pickImage(upstream.image)),
-        url: titleWasFiltered ? null : safeUrl(upstream.url, SAFE_TRACK_HOST),
+        url: titleWasFiltered || artistWasFiltered
+          ? null
+          : safeUrl(upstream.url, SAFE_TRACK_HOST),
         nowPlaying: isNowPlaying(upstream.nowplaying),
       };
 
