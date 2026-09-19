@@ -9,7 +9,6 @@ project:
     - bash build-cv.sh
   resources:
     - Graybill_CV.pdf
-    - plausible_exclude.html
     - assets/email-obfuscation.js
     - assets/lastfm-widget.js
     - assets/uncook.js
@@ -32,6 +31,11 @@ website:
       text: Home
     - href: Graybill_CV.pdf
       text: CV
+  page-footer:
+    center:
+      - text: "About this site & Your privacy"
+        href: about-this-site.qmd
+    border: false
   search: false
   favicon: favicon.ico
   image: assets/opengraph.png

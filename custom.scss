@@ -93,9 +93,78 @@ $link-color: $secondary;
 // Use the same clear keyboard-focus treatment for social links, text links,
 // and buttons in the page content.
 main a:focus-visible,
-main button:focus-visible {
+main button:focus-visible,
+.nav-footer a:focus-visible {
   outline: 3px solid $primary;
   outline-offset: 3px;
+}
+
+/* Minimal site footer */
+
+.nav-footer {
+  border-top: 1px solid $gray-200;
+  font-size: 0.9rem;
+  min-height: auto;
+  padding-block: 1rem;
+}
+
+.nav-footer-center {
+  min-height: auto;
+}
+
+.nav-footer a {
+  color: $gray-700;
+  text-underline-offset: 0.18em;
+}
+
+.nav-footer a:hover {
+  color: $primary;
+}
+
+/* About-this-site page */
+
+.site-colophon {
+  max-width: 46rem;
+}
+
+.site-colophon__section {
+  border-top: 1px solid $gray-200;
+  padding-block: 1.5rem;
+}
+
+.site-colophon__section:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.plausible-preference {
+  background: $gray-100;
+  border-left: 0.3rem solid $primary;
+  border-radius: 0 6px 6px 0;
+  margin-top: 1rem;
+  padding: 1rem;
+}
+
+.plausible-preference > div + div {
+  margin-top: 0.5rem;
+}
+
+.plausible-preference #plausible_button {
+  background: $primary;
+  border: 2px solid $primary;
+  border-radius: 5px;
+  color: $white;
+  display: inline-block;
+  font-weight: 700;
+  margin-top: 0.85rem;
+  padding: 0.45rem 0.8rem;
+  text-decoration: none;
+}
+
+.plausible-preference #plausible_button:hover {
+  background: $indigo;
+  border-color: $indigo;
+  color: $white;
 }
 
 /* Set a specific color for each brand */

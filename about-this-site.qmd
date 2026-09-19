@@ -1,0 +1,245 @@
+---
+title: "About this site"
+---
+
+:::: {.site-colophon}
+
+::: {.site-colophon__section}
+## Too long; don't want to read {#tldr}
+
+I do not store any of your personal data, but I do use
+[Plausible Analytics](https://plausible.io/about) to count the number of visitors
+to my site. Plausible tells me the kinds of devices that are used to browse my site
+and which pages are visited---that information is usually sent when you visit a website anyway.
+But neither Plausible nor I know anything identifiable about you. 
+If you're not cool with being counted, feel free to opt out using
+the [analytics opt-out button below](#analytics-preference).
+
+This website used to use Google Analytics, but now when you visit the site, there
+should be some JavaScript that removes the past cookies set by Google on my site.
+
+This website is made in [Quarto](https://quarto.org/docs/websites/) with lots of
+love and hand-written code and also lots of code written by
+[OpenAI's Codex](https://openai.com/codex/). All of the text you read (including
+this) is written by me. I use LLMs to add fun features that I wouldn't be good 
+enough at JavaScript to code myself. It's a labor of love, and you can check out
+[the website's GitHub repo](https://github.com/aarongraybill/personal_website)
+here if you're interested.
+:::
+
+::: {.site-colophon__section}
+## Privacy {#privacy}
+
+In developing this website, I've learned a bit about privacy on the internet. 
+I thought it might be useful to summarize what I've learned that could be relevant
+to other academics who have a website or are considering making one. None of this
+is legal advice, just some topics I didn't know I should be thinking about until
+long after I started my site.
+
+### Hosting & Third-Party Requests {#third-party-requests}
+
+I have tried to minimize the number of times that any information about you is 
+sent to a domain other than [https://aarongraybill.com](https://aarongraybill.com).
+
+The fonts you see when you visit a website may not be installed on your machine,
+so those fonts have to come from somewhere---often a third party. But because of
+the [EU's General Data Protection Regulation](https://gdpr.eu/), I did not want 
+EU visitors to my site to have their IP address (which is often personally identifying)
+sent to third parties just for my fancy fonts. Hence, hosting the fonts directly
+on the website seemed like the right alternative.
+
+I used to use [Google Fonts](https://fonts.google.com/), a site that I love, to
+deliver my fonts, but GDPR compliance and some additional personal reflection led
+me to decide that sending IPs to Google for fonts may not be the wisest choice.
+
+Similarly, in the "What's Playing" music card on my homepage, I use 
+the [Last.Played site](https://soft.thran.uk/last-played.html) to get my 
+recent streams on [Last.fm](https://www.last.fm/about). In the first implementation, I had the user's 
+browser ask Last.fm directly for the album art, exposing their IP address to
+a third party for another frivolous reason. Now I have the host of my website,
+[Google Firebase](https://firebase.google.com/), make that request on your behalf
+and just show you the result, so only Google is talking to Last.fm, not you.
+
+After fixing those things, I believe my site makes only one third-party requests to Plausible.io, but
+feel free to let me know if that's not the case for you.
+
+### Analytics Overview {#analytics-overview}
+
+This website uses [Plausible Analytics](https://plausible.io/about) to count the
+number of visitors to my pages. Plausible is open source and was built
+to be GDPR compliant. You can read [Plausible's source code](https://github.com/plausible/analytics)
+if you want more information, but my layperson's understanding of how it counts
+users without surveilling you is through [hashing](https://en.wikipedia.org/wiki/Cryptographic_hash_function) the data your browser already 
+sends whenever you access a website. I like to think of it as having every individual
+add a marble to a jar. You can see that there are different types of marbles in
+the jar, but that doesn't mean you can tell who put it in there.
+
+For example, say you're visiting my website on an iPhone from San Francisco. In 
+order to see my site at all you need to send your IP address so 
+that the host of the site knows where to send the information back to. Plausible
+doesn't want to store your IP address, but it does want to know the very general
+location from which you're accessing the site, say if you needed to provide more
+language-specific offerings. IP addresses can correlate with general location, like your city, 
+and so Plausible would save that *someone* accessed the site from San Francisco,
+but it wouldn't store the particular IP address of that user. Additionally, to
+ensure that my website renders on a phone correctly, the browser tells the website
+"I'm visiting this website on this kind of phone, so maybe you want to give me
+a different version of the website that's optimized for mobile." Plausible would put a marble in the iPhone bucket, but
+it doesn't store any persistent information about you in particular.
+
+Many website owners care about the number of unique visitors to a website, not
+just the total visits, which seems hard to count in a privacy-preserving way.
+Plausible does this clever thing that essentially does the following: 
+
+1. Take the `User-Agent` information your browser often sends by default and append that 
+  into one long string
+2. Append the current date to that long string.
+3. Apply a [hash function](https://en.wikipedia.org/wiki/Cryptographic_hash_function) to that string until you get something like `fad7ad8a67e65d4eed9aecb391d4291c` so you're assigned a string you'd be *extremely* unlikely to
+share with anyone else
+4. If you come back to the website on the same day, your request would get hashed in the same way, so you wouldn't be double-counted
+5. If you came back the next day, because Plausible adds the current date to the hash input, your new hash would have 
+effectively no relationship to yesterday's value, so you are counted as a new daily viewer, without tracking you for
+a long period of time. 
+
+In my opinion, it's a clever way to take what's necessary to use the internet,
+gain business-relevant (and hopefully mutually beneficial) insights, but not 
+track you specifically.
+
+### Analytics Opt Out {#analytics-preference}
+
+But if you're not interested in that, you can always opt out with the button below.
+Be aware, that if you plan to visit this site on multiple browsers or devices,
+you'll need to opt out on every browser-device combination. That is a blessing
+and curse of not storing any data about you.
+
+```{=html}
+<div class="plausible-preference">
+  <div>Click the button below to toggle your exclusion in analytics for this site.</div>
+  <div>You currently <span id="plausible_not" style="display: none;">are not</span><span id="plausible_yes" style="display: inline;">are</span> excluding your visits.</div>
+  <a id="plausible_button" href="javascript:toggleExclusion()">Stop excluding my visits</a>
+</div>
+
+<script>
+  window.addEventListener('load', function (e) {
+    var exclusionState = window.localStorage.plausible_ignore == "true"
+
+    if (exclusionState) {
+      document.getElementById("plausible_not").style.display = "none"
+      document.getElementById("plausible_yes").style.display = "inline"
+      document.getElementById("plausible_button").innerHTML = 'Stop excluding my visits'
+    } else {
+      document.getElementById("plausible_yes").style.display = "none"
+      document.getElementById("plausible_not").style.display = "inline"
+      document.getElementById("plausible_button").innerHTML = 'Exclude my visits'
+    }
+  });
+
+  function toggleExclusion(e) {
+    var exclusionState = window.localStorage.plausible_ignore == "true"
+
+    if (exclusionState) {
+      delete window.localStorage.plausible_ignore
+      document.getElementById("plausible_yes").style.display = "none"
+      document.getElementById("plausible_not").style.display = "inline"
+      document.getElementById("plausible_button").innerHTML = 'Exclude my visits'
+    } else {
+      window.localStorage.plausible_ignore = "true"
+      document.getElementById("plausible_not").style.display = "none"
+      document.getElementById("plausible_yes").style.display = "inline"
+      document.getElementById("plausible_button").innerHTML = 'Stop excluding my visits'
+    }
+  }
+</script>
+```
+:::
+
+
+::: {.site-colophon__section}
+## Design {#design}
+
+### Accessibility {#accessibility}
+
+Where possible, I've tried to make my site more accessible. Below I have some examples,
+but if you find something isn't working for you, or you have any suggestions feel
+free to let me know.
+
+#### Email Obfuscation
+
+Many academics try to make their emails harder for bots to scrape, but this 
+can come at the expense of accessibility. Many folks do something like
+mycoolemail[at]institution[dot]edu but this is really not that strong of a defense.
+A much stronger way to obfuscate your email is to handwrite it and upload it as
+a picture, but for people who are less able to see your screen, that makes it
+way harder for them to get your email---which is really one of the main points of
+having a website at all, so that seems unfair.
+
+I used to use an [image-based obfuscation of my email](https://github.com/aarongraybill/personal_website/blob/2f81e4da963e879b7f1d092efde6f106c968192f/helpers/create_email_image/email_image.png), but I have switched to a method that is hopefully easier
+to use for everyone---including those who have no issues seeing.
+
+Many scrapers are not willing to spend the time and electricity executing JavaScript
+on a website; they just parse the HTML. Hence, if you can
+make the rendering of the email address dependent on JavaScript, you will handle 
+many scrapers. Hence, my email is encoded in a JavaScript file as a sequence of
+integers that I can map to UTF-16 characters. It's
+trivial for JavaScript to convert these numbers to their corresponding characters.
+Modern screen readers relay changes to a website from executing JavaScript, so people using them should have no
+issue getting my email address. This also allowed me to incorporate a nice copy
+email button, which is a win for people with any kind of vision!
+This idea is taken directly from this [excellent blog post about email obfuscation](https://spencermortensen.com/articles/email-obfuscation/#text-conversion), but 
+beware that is is a dead link at time of writing.
+
+All of that said, in the world of LLM agents, which can easily mimic human browsing
+behavior, it's not clear that any degree of email obfuscation will be effective.
+
+#### Metadata and ARIA Attributes
+
+My website has some aesthetic elements that should not confuse someone who cannot
+see them. In particular, that means adding alt text for the images that are important,
+like my portrait. Some other features of the website are more non-standard and
+are not as easily explained just via alt text. This is why adding ARIA attributes
+to the non-standard HTML is useful. For example, I have a LinkedIn button on my
+homepage. For sighted users, it's quite obvious that this is a link to my LinkedIn,
+but if you can't see the LinkedIn logo and brand-appropriate colors, it might be
+hard to infer what that HTML element is doing. To address that, I add the 
+`aria-label` attribute to the link to explain that it links to my LinkedIn profile,
+while I set the attribute `aria-hidden="true"` for the actual LinkedIn logo to
+indicate that if it cannot be seen, it need not be communicated to the user.
+
+:::
+
+::: {.site-colophon__section}
+## How it is built {#construction}
+
+### What it is
+
+I've built this website in [Quarto](https://quarto.org/docs/websites/), which 
+is in the [RStudio/Posit](https://posit.co/products) universe. It allows you to 
+write in human-readable markdown and compile your results to machine-readable
+HTML and JavaScript. I found the learning curve to be a bit steep, but the overall
+product is relatively flexible. 
+
+This website is hosted on [Google Firebase](https://firebase.google.com) which
+is free for my number of visitors. I like Firebase because it allows me to have 
+custom functions like my what's playing card on the homepage
+while still being free. It also plays nicely with Quarto, which is why I originally
+chose it.
+
+My domain name (aarongraybill.com) was gifted to me through [GoDaddy](https://www.godaddy.com/).
+Honestly, I still don't know how domain names work. I know I pay GoDaddy annually for 
+the privilege of keeping my domain. I'm not sure if I could use another domain name provider.
+The internet is confusing to me. It was also rather annoying to make sure that
+[https://aarongraybill.com](https://aarongraybill.com) works just as well as [https://www.aarongraybill.com](https://www.aarongraybill.com) (with a `www.`),
+so happy to help if that's something you're struggling with.
+
+### Why it is
+
+Where possible, I've tried to build every aesthetic element of my website using
+code---mostly because I think it's fun. For example, the favicon (the little icon
+you see next to the tab in your browser) is built using an R script that manually
+loads the right font, applies an outline, and saves it in the right format and
+dimensions. The [code that builds the favicon](https://github.com/aarongraybill/personal_website/blob/main/helpers/create_favicon/create_favicon.R) is 
+admittedly frivolous, but I think it's fun! 
+
+:::
+
+::::
